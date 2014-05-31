@@ -15,6 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="3ds.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -22,10 +23,20 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TextureObjects.cpp">
+=======
+    <ClCompile Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\3ds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\TextureObjects.cpp">
+>>>>>>> 4853f868f758f67ba25370e0893659db0c9a91af
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClInclude Include="3ds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -36,10 +47,23 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TextureObjects.h">
+=======
+    <ClInclude Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\3ds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\jpeglib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\TextureObjects.h">
+>>>>>>> 4853f868f758f67ba25370e0893659db0c9a91af
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="main.dsp" />
     <None Include="main.dsw" />
     <None Include="main.ncb" />
@@ -49,5 +73,21 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="jpeg.lib" />
+=======
+    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\grenade.3DS" />
+    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.dsp" />
+    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.dsw" />
+    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.ncb" />
+    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.opt" />
+    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.plg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\jpeg.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\screenshot.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+>>>>>>> 4853f868f758f67ba25370e0893659db0c9a91af
   </ItemGroup>
 </Project>

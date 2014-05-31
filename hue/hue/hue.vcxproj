@@ -10,6 +10,7 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup>
     <ClCompile Include="3ds.cpp" />
     <ClCompile Include="main.cpp" />
@@ -32,6 +33,8 @@
   <ItemGroup>
     <Library Include="jpeg.lib" />
   </ItemGroup>
+=======
+>>>>>>> 4853f868f758f67ba25370e0893659db0c9a91af
   <PropertyGroup Label="Globals">
     <ProjectGuid>{737ABDF0-CC9E-491B-923B-EE73F3E57102}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -101,6 +104,34 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+<<<<<<< HEAD
+=======
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\3ds.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\TextureObjects.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\3ds.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\jpeglib.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\TextureObjects.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\grenade.3DS" />
+    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.dsp" />
+    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.dsw" />
+    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.ncb" />
+    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.opt" />
+    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.plg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\jpeg.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\screenshot.JPG" />
+  </ItemGroup>
+>>>>>>> 4853f868f758f67ba25370e0893659db0c9a91af
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
