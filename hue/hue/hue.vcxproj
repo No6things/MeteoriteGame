@@ -10,33 +10,8 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-<<<<<<< HEAD
-  <ItemGroup>
-    <ClCompile Include="3ds.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="TextureObjects.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="3ds.h" />
-    <ClInclude Include="jpeglib.h" />
-    <ClInclude Include="main.h" />
-    <ClInclude Include="TextureObjects.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="firebird_fighter.3ds" />
-    <None Include="main.dsp" />
-    <None Include="main.dsw" />
-    <None Include="main.ncb" />
-    <None Include="main.opt" />
-    <None Include="main.plg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="jpeg.lib" />
-  </ItemGroup>
-=======
->>>>>>> 4853f868f758f67ba25370e0893659db0c9a91af
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{737ABDF0-CC9E-491B-923B-EE73F3E57102}</ProjectGuid>
+    <ProjectGuid>{F214CCB7-F628-48CA-9CBF-C9D5D6509CD5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>hue</RootNamespace>
   </PropertyGroup>
@@ -76,7 +51,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -104,34 +79,53 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-<<<<<<< HEAD
-=======
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\3ds.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\TextureObjects.cpp" />
+    <ClCompile Include="3ds.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TextureObjects.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\3ds.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\jpeglib.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\TextureObjects.h" />
+    <ClInclude Include="3ds.h" />
+    <ClInclude Include="jpeglib.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="TextureObjects.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\grenade.3DS" />
-    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.dsp" />
-    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.dsw" />
-    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.ncb" />
-    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.opt" />
-    <None Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\main.plg" />
+    <Image Include="ARX.jpg" />
+    <Image Include="ARXbum.jpg" />
+    <Image Include="Auger1536RearDoorBUMP.jpg" />
+    <Image Include="control012.jpg" />
+    <Image Include="DysDisplay 010.jpg" />
+    <Image Include="hull_001.jpg" />
+    <Image Include="Keypad.jpg" />
+    <Image Include="KeyPan-Weaps-Left-Color.jpg" />
+    <Image Include="KeyPanLeft-Color.jpg" />
+    <Image Include="old_metal_grippy.jpg" />
+    <Image Include="oriontarget.jpg" />
+    <Image Include="Refmap.gif" />
+    <Image Include="Screen-Planet Data-Lumin.jpg" />
+    <Image Include="Screen_temps.jpg" />
+    <Image Include="Seat.jpg" />
+    <Image Include="Seat_Cussion.jpg" />
+    <Image Include="Tiebump.jpg" />
+    <Image Include="tiebump2.jpg" />
+    <Image Include="wall_002.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\jpeg.lib" />
+    <None Include="Auger.3DS" />
+    <None Include="firebird_fighter.3ds" />
+    <None Include="firewing.3DS" />
+    <None Include="grenade.3DS" />
+    <None Include="main.dsp" />
+    <None Include="main.dsw" />
+    <None Include="main.ncb" />
+    <None Include="main.opt" />
+    <None Include="main.plg" />
+    <None Include="Tie-drd.3ds" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\..\Desktop\Nueva carpeta\3DS Texture Loader\screenshot.JPG" />
+    <Library Include="jpeg.lib" />
   </ItemGroup>
->>>>>>> 4853f868f758f67ba25370e0893659db0c9a91af
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
