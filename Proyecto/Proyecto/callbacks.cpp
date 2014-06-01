@@ -19,7 +19,7 @@ void Display()  // funcion para dibujar todo!
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glLoadIdentity();
-	gluLookAt(1000,10,0,0,0,0,0,1,0);
+	gluLookAt(4000,10,0,0,0,0,0,1,0);
 	
 	//Dibujando modelo
 	Draw_3DS_Object(0,0,0,500);

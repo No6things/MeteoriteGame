@@ -103,10 +103,11 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 						// Make sure there was a UVW map applied to the object or else it won't have tex coords.
 						if(pObject->pTexVerts) 
 						{
+							//
 							glTexCoord2f(pObject->pTexVerts[ index ].x, pObject->pTexVerts[ index ].y);
 						}
 					} 
-					else 
+					else  //Does not have texture
 					{
 						// if the size is at > 1 and material ID != -1, then it is a valid material.
 						if(g_3DModel.pMaterials.size() && pObject->materialID >= 0) 
