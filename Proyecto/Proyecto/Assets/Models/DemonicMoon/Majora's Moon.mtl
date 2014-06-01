@@ -1,0 +1,269 @@
+newmtl Bone
+Ka 0 0 0
+Kd 0.784314 0.784314 0.784314
+Ks 0 0 0
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+
+newmtl body
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd skin.psd
+map_bump skin.psd
+bump skin.psd
+
+newmtl ears
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd ears.psd
+
+newmtl eyes
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd eye.psd
+map_bump eye.psd
+bump eye.psd
+
+newmtl face
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd face.psd
+
+newmtl ge
+Ka 0 0 0
+Kd 0.784314 0.784314 0.784314
+Ks 0 0 0
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd helmeye.psd
+
+newmtl hair
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd hairstart.psd
+map_bump hairstart.psd
+bump hairstart.psd
+
+newmtl hair2
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd hairstart.psd
+map_bump hairstart.psd
+bump hairstart.psd
+
+newmtl hairdwn
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd hairstart.psd
+map_bump hairstart.psd
+bump hairstart.psd
+
+newmtl helmet
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd helmet.psd
+map_bump helmet.psd
+bump helmet.psd
+
+newmtl left_hand
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd skin.psd
+
+newmtl n10b7
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+
+newmtl n2b6
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+
+newmtl n3b8
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+
+newmtl pony_tail
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd hairstart.psd
+
+newmtl right_hand
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd skin.psd
+
+newmtl tie
+Ka 0 0 0
+Kd 0.588235 0.588235 0.588235
+Ks 0.1 0.1 0.1
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd tie.psd
+
+newmtl Default
+Ka 0 0 0
+Kd 0.784314 0.784314 0.784314
+Ks 0 0 0
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+
+newmtl Eye
+Ka 0 0 0
+Kd 0.988032 0.733476 0
+Ks 0 0 0
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+
+newmtl Ground
+Ka 0 0 0
+Kd 0.784314 0.784314 0.784314
+Ks 0 0 0
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+map_Kd Big Top.png
+
+newmtl Moon
+Ka 0 0 0
+Kd 0.535482 0.4904 0.420181
+Ks 0.2 0.2 0.2
+Ni 1
+Ns 100
+Tf 1 1 1
+d 1
+
+newmtl Pupil
+Ka 0 0 0
+Kd 0 0 0
+Ks 0 0 0
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+
+newmtl Teeth
+Ka 0 0 0
+Kd 0.736898 0.68766 0.582328
+Ks 0.2 0.2 0.2
+Ni 1
+Ns 100
+Tf 1 1 1
+d 1
+
+newmtl Eye
+Ka 0 0 0
+Kd 0.988032 0.733476 0
+Ks 0 0 0
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+
+newmtl Moon
+Ka 0 0 0
+Kd 0.535482 0.4904 0.420181
+Ks 0.2 0.2 0.2
+Ni 1
+Ns 100
+Tf 1 1 1
+d 1
+
+newmtl Pupil
+Ka 0 0 0
+Kd 0 0 0
+Ks 0 0 0
+Ni 1
+Ns 400
+Tf 1 1 1
+d 1
+
+newmtl Teeth
+Ka 0 0 0
+Kd 0.736898 0.68766 0.582328
+Ks 0.2 0.2 0.2
+Ni 1
+Ns 100
+Tf 1 1 1
+d 1
+
