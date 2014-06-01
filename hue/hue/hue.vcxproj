@@ -80,15 +80,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="3ds.cpp">
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Rodolfo\Downloads\freeglut-MSVC-2.8.1-1.mp\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Rodolfo\Downloads\freeglut-MSVC-2.8.1-1.mp\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-    <ClCompile Include="TextureObjects.cpp">
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Rodolfo\Downloads\freeglut-MSVC-2.8.1-1.mp\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
+    <ClCompile Include="3ds.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TextureObjects.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3ds.h" />
