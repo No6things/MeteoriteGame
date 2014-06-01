@@ -5,6 +5,5 @@
 
 
 extern int main_window, h, w, mousex, mousey;
-
-
+extern int cont;
 #endif

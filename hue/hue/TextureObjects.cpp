@@ -13,12 +13,12 @@
 #include "TextureObjects.h"						// Include our header file for Fmod prototypes
 using namespace std;
 //Define a new structure to hold the image information
-/*	
+	/*
 typedef struct _ImageDataRec {
-	int sizeX, 
+	int sizeX;
 	int sizeY;
 	unsigned char *data;
-} ImageDataRec
+} ImageDataRec;
 
 //Old Structure information
 typedef struct _AUX_RGBImageRec {
@@ -33,8 +33,8 @@ struct tImageJPG
 	int sizeX;
 	int sizeY;
 	unsigned char *data;
-};
-*/	
+};  */
+
 
 
 ///////////////////////////////// DECODE JPG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
@@ -202,6 +202,7 @@ bool CTextures::FileExist(char *mFileName)
 bool CTextures::LoadTexture(char *mFileName, UINT &mTexture)
 {
 	ImageDataRec *mImage = NULL;
+	
 	char tempstring[5] = {0};
 
 	//post some type of debug information
