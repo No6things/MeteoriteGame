@@ -14,4 +14,81 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\SKB\SKB_BK.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\SKB\SKB_DN.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\SKB\SKB_FR.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\SKB\SKB_LF.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\SKB\SKB_RT.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\SKB\SKB_UP.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="variables_globales.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="callbacks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="algoritmos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3ds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureObjects.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cargador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="variables_globales.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="callbacks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="algoritmos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="3ds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jpeglib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureObjects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cargador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="jpeg.lib">
+      <Filter>Source Files</Filter>
+    </Library>
+  </ItemGroup>
 </Project>

@@ -47,16 +47,17 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>libc.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -78,6 +79,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Image Include="Assets\SKB\SKB_BK.jpg" />
+    <Image Include="Assets\SKB\SKB_DN.jpg" />
+    <Image Include="Assets\SKB\SKB_FR.jpg" />
+    <Image Include="Assets\SKB\SKB_LF.jpg" />
+    <Image Include="Assets\SKB\SKB_RT.jpg" />
+    <Image Include="Assets\SKB\SKB_UP.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="3ds.cpp" />
+    <ClCompile Include="algoritmos.cpp" />
+    <ClCompile Include="callbacks.cpp" />
+    <ClCompile Include="cargador.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="TextureObjects.cpp" />
+    <ClCompile Include="variables_globales.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="3ds.h" />
+    <ClInclude Include="algoritmos.h" />
+    <ClInclude Include="callbacks.h" />
+    <ClInclude Include="cargador.h" />
+    <ClInclude Include="jpeglib.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TextureObjects.h" />
+    <ClInclude Include="variables_globales.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="jpeg.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
