@@ -44,7 +44,7 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 	// We want the model to rotate around the axis so we give it a rotation
 	// value, then increase/decrease it. You can rotate right of left with the arrow keys.
 	glPushMatrix();
-
+	
 	glRotatef(g_RotateX, 0, 1.0f, 0);							// Rotate the object around the Y-Axis	
 	if (g_RotateObject)	{	g_RotateX += g_RotationSpeed;	}	// Increase the speed of rotation
 	
@@ -67,7 +67,7 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 			glEnable(GL_TEXTURE_2D);
 
 			// Reset the color to normal again
-			glColor3ub(255, 255, 255);
+			//glColor3ub(255, 255, 255);
 
 			// Bind the texture map to the object by it's materialID
 			glBindTexture(GL_TEXTURE_2D, g_Texture[pObject->materialID]);

@@ -32,7 +32,7 @@ struct tImageJPG
 	unsigned char *data;
 };
 */	
-
+int count;
 
 ///////////////////////////////// DECODE JPG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
 /////	This decodes the jpeg and fills in the tImageJPG structure

@@ -17,10 +17,9 @@ void Reshape(int width, int height){
 void Display()  // funcion para dibujar todo!
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	glLoadIdentity();
 	gluLookAt(4000,10,0,0,0,0,0,1,0);
-	
+	cont++;
 	//Dibujando modelo
 	Draw_3DS_Object(0,0,0,500);
 

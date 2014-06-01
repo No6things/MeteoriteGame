@@ -466,13 +466,12 @@ void CLoad3DS::ReadUVCoordinates(t3DObject *pObject, tChunk *pPreviousChunk)
 	// Read in the number of UV coordinates there are (int)
 	pPreviousChunk->bytesRead += fread(&pObject->numTexVertex, 1, 2, m_FilePointer);
 
-	// Allocate memory to hold the UV coordinates
+	// Allocate memory to hold the UV coordinates array
 	pObject->pTexVerts = new CVector2 [pObject->numTexVertex];
 
 	// Read in the texture coodinates (an array 2 float)
 	pPreviousChunk->bytesRead += fread(pObject->pTexVerts, 1, pPreviousChunk->length - pPreviousChunk->bytesRead, m_FilePointer);
 }
-
 
 ///////////////////////////////// READ VERTICES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
 /////

@@ -4,7 +4,7 @@
 #define VARIABLES_GLOBALES_H
 
 
-extern int main_window, h, w, mousex, mousey;
+extern int main_window,cont, h, w, mousex, mousey;
 
 
 #endif
