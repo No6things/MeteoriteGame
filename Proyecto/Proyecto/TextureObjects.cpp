@@ -9,29 +9,7 @@
 \*********************************************************************************************/
 
 #include "stdafx.h"
-//Define a new structure to hold the image information
-/*	
-typedef struct _ImageDataRec {
-	int sizeX, 
-	int sizeY;
-	unsigned char *data;
-} ImageDataRec
 
-//Old Structure information
-typedef struct _AUX_RGBImageRec {
-	GLint sizeX, 
-	GLint sizeY;
-	unsigned char *data;
-} AUX_RGBImageRec;
-
-struct tImageJPG
-{
-	int rowSpan;
-	int sizeX;
-	int sizeY;
-	unsigned char *data;
-};
-*/	
 int count;
 
 ///////////////////////////////// DECODE JPG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*

@@ -27,6 +27,9 @@ typedef struct _ImageDataRec {
 	unsigned char *data;
 } ImageDataRec;
 
+void DecodeJPG(jpeg_decompress_struct* cinfo, ImageDataRec *pImageData);
+ImageDataRec *LoadJPG(const char *filename);
+ImageDataRec *LoadBMP(const char *mFileName);
 
 class CTextures
 {
@@ -46,5 +49,7 @@ class CTextures
 		bool FileExist(char *mFileName);
 				
 };
+
+
 
 #endif

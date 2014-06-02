@@ -19,19 +19,17 @@ void Display()  // funcion para dibujar todo!
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	gluLookAt(4000,10,0,0,0,0,0,1,0);
+	gluLookAt(4000,1000,0,0,0,0,0,1,0);
 	cont++;
 	//Dibujando modelo
-	Draw_3DS_Object(0,0,0,500);
+	skybox();
+	//Draw_3DS_Object(1000,0,0,0);
 
 	glutSwapBuffers();
 	glutPostRedisplay();
 
 
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
-
-	// Set the view so y is up, view point is 2,2,2 and lookat is 0,0,0 
-	glMatrixMode(GL_MODELVIEW);	
+	
 	
 }
 
