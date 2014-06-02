@@ -31,7 +31,7 @@ void Init(int argc, char* argv[]){
 	//glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
 
 	  //Cargando modelo de nave
-	  //Load_3DS_Object("Assets/Models/Firebird/Firebird.3ds"); 
+	  Load_3DS_Object("Assets/Models/Firebird/Firebird.3ds"); 
 
 	// Turn on a lighting and enable it, we will just use the default values in this case
 	// We also want color, so we turn that on
