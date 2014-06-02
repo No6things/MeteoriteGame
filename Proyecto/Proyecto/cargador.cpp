@@ -50,17 +50,21 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		cont++; */
 	glPushMatrix();
 
-	if (cont<500){
-	glRotatef(g_RotateX, 0, 1.0, 0);
-	cont++;
-	cout<<cont<<endl;
-	}
-	if (cont==500){
-	glRotatef(g_RotateX,0.1f,0,0);
-	}
-	// Rotate the object around the Y-Axis	
-	if (g_RotateObject  )	{	 g_RotateX += g_RotationSpeed;	}	// Increase the speed of rotation
+
+	glRotatef(276, 0.0f, 1.0f, 0.0f);
+
+	glRotatef (g_RotateY,0.0f,0.0f,1.0f);
 	
+	glTranslatef (-g_TranslateX,0.0f,0.0f);
+
+	// Rotate the object around the Y-Axis	
+	
+	// Increase the speed of rotation
+	
+	 if (g_RotateObject && cont<50) {cont++; g_RotateY+=0.08;}
+
+	 else if (cont< 200){cont++; g_TranslateX+=10;}
+
 	// We have a model that has a certain amount of objects and textures.  We want to go through each object 
 	// in the model, bind it's texture map to it, then render it by going through all of it's faces (Polygons).  	
 	
