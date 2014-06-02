@@ -53,17 +53,43 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 
 	glRotatef(276, 0.0f, 1.0f, 0.0f);
 
-	glRotatef (g_RotateY,0.0f,0.0f,1.0f);
+	if (derecha){
 	
-	glTranslatef (-g_TranslateX,0.0f,0.0f);
+	g_TranslateX-=5;
+	glTranslatef (g_TranslateX,0.0f,0.0f);
+	
+
+
+
+		glRotatef (25,0.0f,0.0f,1.0f);
+		
+		
+	}
+
+	else if (izquierda){
+
+		
+		g_TranslateX+=5;
+
+		glTranslatef(g_TranslateX,0.0f,0.0f);
+
+	
+
+
+	
+		glRotatef (25,0.0f,0.0f,-1.0f);
+		cont++;
+		
+		
+	}
+	
 
 	// Rotate the object around the Y-Axis	
 	
 	// Increase the speed of rotation
 	
-	 if (g_RotateObject && cont<50) {cont++; g_RotateY+=0.08;}
+	 
 
-	 else if (cont< 200){cont++; g_TranslateX+=10;}
 
 	// We have a model that has a certain amount of objects and textures.  We want to go through each object 
 	// in the model, bind it's texture map to it, then render it by going through all of it's faces (Polygons).  	

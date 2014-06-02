@@ -46,6 +46,18 @@ void Keyboard(unsigned char key, int x, int y) // callback para eventos del tecl
 			break;
 		case 127: //suprimir
 			break;
+
+		case 'a':
+			izquierda=true;
+			derecha=false;
+			cont=0;
+			break;
+
+		case 'd':
+			derecha=true;
+			izquierda=false;
+			cont=0;
+			break;
 		}
 }
 
