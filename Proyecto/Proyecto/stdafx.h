@@ -4,6 +4,7 @@ using namespace std;
 
 #include <cmath>
 #include <windows.h>
+#include <GL\gl.h>
 #include <GL\freeglut.h>
 #include <cstdio>
 #include <vector>

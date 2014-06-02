@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "variables_globales.h"
 CLoad3DS g_Load3ds;								// This is 3DS class.  This should go in a good model class.
 t3DModel g_3DModel;								// This holds the 3D Model info that we load in
 UINT g_Texture[10] = {0};						// This holds the texture info, referenced by an ID
@@ -44,16 +43,8 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 {
 	// We want the model to rotate around the axis so we give it a rotation
 	// value, then increase/decrease it. You can rotate right of left with the arrow keys.
-	/*if (cont==150)
-	g_RotateObject=false;
-	else
-		cont++; */
+
 	glPushMatrix();
-<<<<<<< HEAD
-	
-	glRotatef(g_RotateX, 0, 1.0f, 0);							// Rotate the object around the Y-Axis	
-	if (g_RotateObject)	{	g_RotateX += g_RotationSpeed;	}	// Increase the speed of rotation
-=======
 
 	if (cont<500){
 	glRotatef(g_RotateX, 0, 1.0, 0);
@@ -65,7 +56,6 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 	}
 	// Rotate the object around the Y-Axis	
 	if (g_RotateObject  )	{	 g_RotateX += g_RotationSpeed;	}	// Increase the speed of rotation
->>>>>>> 12b4ab505d626d869f346056c954899957a44412
 	
 	// We have a model that has a certain amount of objects and textures.  We want to go through each object 
 	// in the model, bind it's texture map to it, then render it by going through all of it's faces (Polygons).  	
@@ -83,8 +73,8 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		if(pObject->bHasTexture) 
 		{
 			// Turn on texture mapping and turn off color
-			glEnable(GL_TEXTURE_2D);
-
+			//glEnable(GL_TEXTURE_2D);
+			glActiveTexture(GL_TEXTURE0);
 			// Reset the color to normal again
 			//glColor3ub(255, 255, 255);
 
