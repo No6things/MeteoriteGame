@@ -49,9 +49,29 @@ void Texto::FramesPerSecond(){
 		timebase=time;
 		frame= 0;
 	}
+
+	
+	time_actual++;
+	
+	
+	if (time_actual==30){
+		time_actual=0;
+		segs++;
+	}
+
+	if (segs==60){
+		segs=0;
+		mins++;
+	}
+
+	if (mins==60){
+		mins=0;
+		hours++;
+	}
+	
 }
 
 void Texto::mostrarFPS(float x, float y, int width, int height, CVector3 colorF,void* font,int depth){
-	sprintf_s(msj1, "%s FPS: %.2f Vidas: %d",projectName, fps,3);
+	sprintf_s(msj1, "%s FPS: %.2f Vidas: %d Tiempo: %d:%d:%d",projectName, fps,3,hours,mins,segs);
 	mostrarTexto(msj1, x, y, width, height, colorF,font,depth);
 }

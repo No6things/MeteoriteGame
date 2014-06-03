@@ -9,4 +9,5 @@ float speed_constant = 0.0f;
 CVector3 asteroids_positions[101];
 Texto info("*****Sin Nombre******");
 CVector3 red;
-
+int milis=0,segs=0,mins=0,hours=0;
+int time_actual=0,time_inicial=0;
