@@ -16,12 +16,23 @@ float	xy_aspect;				//aspect ratio variable
 char* dir = "Assets/Models/Asteroid/asteroid 3DS.3ds";
 const bool DEBUG = true;		//Specify if information is written about what is going on to the console window
 
-
+CVector3 centroid;
 
 void Load_3DS_Object(char *path)
 {
 	// Load the *.3DS file.  We just pass in an address to our t3DModel structure and the file name string we want to load
 	g_Load3ds.Import3DS(&g_3DModel, path);			// Load our .3DS file into our model structure
+	centroid.x = centroid.y = centroid.z  = 0;
+	t3DObject *pObject = &g_3DModel.pObject[0];
+	for(int i=0; i<pObject->numOfVerts; i++){
+		centroid.x+=pObject->pVerts[i].x;
+		centroid.y+=pObject->pVerts[i].y;
+		centroid.z+=pObject->pVerts[i].z;
+	}
+	centroid.x/=pObject->numOfVerts;
+	centroid.y/=pObject->numOfVerts;
+	centroid.z/=pObject->numOfVerts;
+	
 	// Depending on how many textures we found, load each one
 	/*
 	for(int i = 0; i < g_3DModel.numOfMaterials; i++)
@@ -129,9 +140,9 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		cont++; */
 
 	glPushMatrix();
-
-
 	glRotatef(276, 0.0f, 1.0f, 0.0f);
+	glTranslatef(centroid.x, centroid.y, centroid.z);
+
 	if (derecha){
 	
 	g_TranslateX-=5;
@@ -162,7 +173,7 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		
 	}
 	
-
+	
 	// Rotate the object around the Y-Axis	
 	
 	// Increase the speed of rotation
@@ -173,6 +184,7 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 	// We have a model that has a certain amount of objects and textures.  We want to go through each object 
 	// in the model, bind it's texture map to it, then render it by going through all of it's faces (Polygons).
 	// Since we know how many objects our model has, go through each of them.
+	glTranslatef(-centroid.x, -centroid.y, -centroid.z);
 	for(int i = 0; i < g_3DModel.numOfObjects; i++)
 	{
 		// Make sure we have valid objects just in case. (size() is in the vector class)
@@ -249,7 +261,7 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		glEnd();			// End the model drawing
 	}
 	glPopMatrix();
-	for(int i=0; i<2; i++){
+	for(int i=0; i<3; i++){
 		glPushMatrix();
 			glScalef(5.0f, 5.0f, 5.0f);
 			glTranslated(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z);
