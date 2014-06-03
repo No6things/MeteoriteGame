@@ -59,7 +59,7 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 	glTranslatef (g_TranslateX,0.0f,0.0f);
 	
 
-
+	
 
 		glRotatef (25,0.0f,0.0f,1.0f);
 		
@@ -78,7 +78,7 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 
 	
 		glRotatef (25,0.0f,0.0f,-1.0f);
-		cont++;
+		
 		
 		
 	}
