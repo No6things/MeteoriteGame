@@ -1,8 +1,6 @@
 #ifndef _XBOX_CONTROLLER_H_
 #define _XBOX_CONTROLLER_H_
 
-#include "GlobalHeader.h"
-
 #pragma once
 class XBOXcontroller{
 	private:

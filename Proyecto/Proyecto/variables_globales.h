@@ -12,4 +12,6 @@ extern bool izquierda,derecha;
 extern float g_TranslateX2;
 extern float speed_constant;
 extern CVector3 asteroids_positions[101];
+extern CVector3 red;
+extern Texto info;
 #endif

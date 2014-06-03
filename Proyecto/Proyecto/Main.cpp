@@ -16,11 +16,13 @@ void InitOpenGL()   // inicializa OpenGL
 }
 
 void Init(int argc, char* argv[]){  
+	  red.x=0.0f;red.y=1.f;red.z=0.f;
 	  glutInit(&argc, argv);  //Iniciando GLUT y OpenGL
 	  glutInitWindowPosition(250,250);
 	  glutInitWindowSize(w, h);
 	  glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE |GLUT_DEPTH);
 	  main_window= glutCreateWindow("*****Sin Nombre******");
+
 	  InitOpenGL();
 
 	  glEnable(GL_TEXTURE_2D);							// Habilitando mapeo de texturas

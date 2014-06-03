@@ -1,12 +1,11 @@
-#include "Text.h"
+#include "stdafx.h"
 
-Text::Text(char *projectN){
+Texto::Texto(char *projectN){
 	frame = time = timebase= 0;
-	sprintf_s(msj,"Tarea 4 ICG: 0.0");
 	projectName = projectN;
 }
 
-void Text::displayText(char *text, float x, float y, int width, int height,glm::vec3 colorF, void* font,int depth){
+void Texto::mostrarTexto(char *text, float x, float y, int width, int height,CVector3 colorF, void* font,int depth){
 	char *c;
 
 	if (depth==GL_DEPTH_TEST)
@@ -26,10 +25,10 @@ void Text::displayText(char *text, float x, float y, int width, int height,glm::
 		glTranslatef(0.0f, (GLfloat)-height, 0.0f);
 		glMatrixMode(GL_MODELVIEW);	
 		glPushMatrix();
-			glLoadIdentity();
-			glRasterPos2f(x, y);
-			for(c = text; *c != '\0'; c++)	
-				glutBitmapCharacter(font, *c);
+		glLoadIdentity();
+		glRasterPos2f(x, y);
+		for(c = text; *c != '\0'; c++)	
+			glutBitmapCharacter(font, *c);
 		glPopMatrix();
 		glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
@@ -42,24 +41,17 @@ void Text::displayText(char *text, float x, float y, int width, int height,glm::
 		glEnable(GL_CULL_FACE);
 }
 
-void Text::calculateFramePerSecond(){
+void Texto::FramesPerSecond(){
 	frame++;
 	time= glutGet(GLUT_ELAPSED_TIME);
-
-	if(time - timebase > 1000){
+	if(time-timebase>1000){
 		fps= (GLfloat)(frame * 1000.f/(time-timebase));
 		timebase=time;
 		frame= 0;
 	}
 }
 
-void Text::displayFPS(float x, float y, int width, int height, glm::vec3 colorF,void* font,int depth){
-	sprintf_s(msj1, "FPS: %.2f", fps);
-	displayText(msj1, x, y, width, height, colorF,font,depth);
-}
-
-void Text::displayFPS(unsigned int win){
-	sprintf_s(msj, "%s FPS: %.2f", projectName, fps);
-	glutSetWindow(win);
-	glutSetWindowTitle(msj);
+void Texto::mostrarFPS(float x, float y, int width, int height, CVector3 colorF,void* font,int depth){
+	sprintf_s(msj1, "%s FPS: %.2f Vidas: %d",projectName, fps,3);
+	mostrarTexto(msj1, x, y, width, height, colorF,font,depth);
 }

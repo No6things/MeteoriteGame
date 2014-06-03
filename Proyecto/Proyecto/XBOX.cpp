@@ -1,4 +1,4 @@
-#include "XBOXcontroller.h"
+#include "stdafx.h"
 
 XBOXcontroller::XBOXcontroller(int playerNumber){
 	_controllerNum = playerNumber;
@@ -6,7 +6,7 @@ XBOXcontroller::XBOXcontroller(int playerNumber){
 
 XINPUT_STATE XBOXcontroller:: getState(){
 	ZeroMemory(&_controllerState, sizeof(XINPUT_STATE));
-	XInputGetState(_controllerNum, &_controllerState);
+	DWORD hue= XInputGetState(_controllerNum, &_controllerState);
 	return _controllerState;
 }
 
@@ -26,5 +26,5 @@ void XBOXcontroller:: vibrate(int leftVal, int rightVal){
 	ZeroMemory(&Vibration, sizeof(XINPUT_VIBRATION));
 	Vibration.wLeftMotorSpeed = leftVal;
 	Vibration.wRightMotorSpeed = rightVal;
-	XInputSetState(_controllerNum, &Vibration);
+	DWORD HUE=XInputSetState(_controllerNum, &Vibration);
 }

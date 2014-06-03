@@ -13,7 +13,6 @@ void Reshape(int width, int height){
 	
 	glMatrixMode(GL_MODELVIEW);
 }
-
 void Display()  // funcion para dibujar todo!
 {
 
@@ -21,10 +20,14 @@ void Display()  // funcion para dibujar todo!
 
 	glLoadIdentity();
 	gluLookAt(4000,10,0,0,0,0,0,1,0);
+	//Calculando FPS. Se puede poner en un hilo
+	info.FramesPerSecond();
+	//Mostrando todo el texto
+	info.mostrarFPS(125,5,200,200,red,GLUT_BITMAP_HELVETICA_12,1);
 	
 	//Dibujando modelo
 	Draw_3DS_Object(0,0,0,500);
-
+	
 	glutSwapBuffers();
 	glutPostRedisplay();
 
@@ -60,6 +63,9 @@ void Keyboard(unsigned char key, int x, int y) // callback para eventos del tecl
 			break;
 		case 's':
 			speed_constant+=0.5f;
+			break;
+		case 'p':
+			glutFullScreenToggle();
 			break;
 		}
 }

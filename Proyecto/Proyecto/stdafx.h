@@ -12,11 +12,14 @@ using namespace std;
 #include <string.h>
 #include <fstream>
 #include <iostream>
+#include <XInput.h>
 #include "TextureObjects.h"
 #include "cargador.h"
 #include "3ds.h"
+#include "texto.h"
 #include "variables_globales.h"
 #include "algoritmos.h"
+#include "XBOX.h"
 #include "callbacks.h"
 
 

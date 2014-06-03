@@ -12,7 +12,6 @@ float astpos = 0.0f;
 //set up a structure for the texture system
 CTextures Textures;
 
-float	xy_aspect;				//aspect ratio variable
 char* dir = "Assets/Models/Asteroid/asteroid 3DS.3ds";
 const bool DEBUG = true;		//Specify if information is written about what is going on to the console window
 
