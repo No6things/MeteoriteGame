@@ -32,12 +32,14 @@ void Init(int argc, char* argv[]){
 
 	  //Cargando modelo de nave
 	  Load_3DS_Object("Assets/Models/Firebird/Firebird.3ds"); 
-
 	// Turn on a lighting and enable it, we will just use the default values in this case
 	// We also want color, so we turn that on
 	  glEnable(GL_LIGHT0);								// Turn on a light with defaults set
 	  glEnable(GL_LIGHTING);							// Turn on lighting
 	  glEnable(GL_COLOR_MATERIAL);						// Allow color
+
+	  asteroids_positions[0].x = 0.0; asteroids_positions[0].y = 0.0; asteroids_positions[0].z = 0.0;
+	  asteroids_positions[1].x = -20.0; asteroids_positions[1].y= 50.0; asteroids_positions[1].z = 65.0;
 }
 
 int main(int argc, char* argv[])

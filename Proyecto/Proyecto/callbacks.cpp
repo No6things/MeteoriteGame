@@ -58,6 +58,9 @@ void Keyboard(unsigned char key, int x, int y) // callback para eventos del tecl
 			izquierda=false;
 			cont=0;
 			break;
+		case 's':
+			speed_constant+=0.5f;
+			break;
 		}
 }
 

@@ -17,8 +17,7 @@
 
 CLoad3DS::CLoad3DS()
 {
-	m_CurrentChunk = new tChunk;				// Initialize and allocate our current chunk
-	m_TempChunk = new tChunk;					// Initialize and allocate a temporary chunk
+	
 }
 
 ///////////////////////////////// IMPORT 3DS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
@@ -30,7 +29,8 @@ CLoad3DS::CLoad3DS()
 bool CLoad3DS::Import3DS(t3DModel *pModel, char *strFileName)
 {
 	wchar_t strMessage[255] = {0};
-
+	m_CurrentChunk = new tChunk;				// Initialize and allocate our current chunk
+	m_TempChunk = new tChunk;					// Initialize and allocate a temporary chunk
 	// Open the 3DS file
 	m_FilePointer = fopen(strFileName, "rb");
 
@@ -67,7 +67,6 @@ bool CLoad3DS::Import3DS(t3DModel *pModel, char *strFileName)
 
 	// Clean up after everything
 	CleanUp();
-
 	return true;
 }
 
@@ -84,7 +83,6 @@ void CLoad3DS::CleanUp()
 	delete m_CurrentChunk;						// Free the current chunk
 	delete m_TempChunk;							// Free our temporary chunk
 }
-
 
 ///////////////////////////////// PROCESS NEXT CHUNK\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
 /////

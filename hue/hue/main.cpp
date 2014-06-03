@@ -17,10 +17,11 @@
 #include <iostream>	//for posting stuff to the console window
 #include <stdio.h>
 #include <stdarg.h>			// Header File For Variable Argument Routines
+
+
 #include <gl\gl.h>			// Header File For The OpenGL32 Libraryu
 #include <gl\glu.h>			// Header File For The GLu32 Library
 #include <gl\glaux.h>		// Header File For The Glaux Library
-
 #include "TextureObjects.h"	// Header File For the texture loader library
 #include "main.h"
 #include "3ds.h"			// Include the 3DS header file.
