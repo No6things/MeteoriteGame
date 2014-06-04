@@ -29,4 +29,8 @@ extern int time_actual,time_inicial;
 extern int milis,segs,mins,hours;
 extern bool golpe;
 extern float temblar;
+extern HDC			hDC;		// Private GDI Device Context
+extern HGLRC		hRC;		// Permanent Rendering Context
+extern HWND		hWnd;		// Holds Our Window Handle
+extern HINSTANCE	hInstance;		// Holds The Instance Of The Application
 #endif

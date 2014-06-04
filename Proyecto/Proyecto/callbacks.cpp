@@ -19,7 +19,7 @@ void Display()  // funcion para dibujar todo!
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glLoadIdentity();
-	gluLookAt(4000,10,0,0,0,0,0,1,0);	//position,focus point,up vector
+	gluLookAt(4000,10,1,100,100,0,0,10,0);	//position,focus point,up vector
 	//Calculando FPS. Se puede poner en un hilo
 	info.FramesPerSecond();
 	//Mostrando todo el texto
