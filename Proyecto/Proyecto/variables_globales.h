@@ -18,4 +18,7 @@ extern CVector3 centroid2; //centroide del meteoro
 extern int radius; //radio de la nave
 extern int radius2; //radio del meteoro
 extern Texto info;	//cuadro de texto
+extern int time_actual,time_inicial;
+extern int milis,segs,mins,hours;
+
 #endif

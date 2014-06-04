@@ -23,7 +23,7 @@ void Display()  // funcion para dibujar todo!
 	//Calculando FPS. Se puede poner en un hilo
 	info.FramesPerSecond();
 	//Mostrando todo el texto
-	info.mostrarFPS(125,5,200,200,red,GLUT_BITMAP_HELVETICA_12,1);
+	info.mostrarFPS(90,5,200,200,red,GLUT_BITMAP_HELVETICA_12,1);
 	
 	//Dibujando modelo
 	Draw_3DS_Object(0,0,0,500);	

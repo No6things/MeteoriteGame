@@ -13,5 +13,5 @@ CVector3 red;
 CVector3 centroid;	
 CVector3 centroid2;
 CTextures Textures;
-
-
+int milis=0,segs=0,mins=0,hours=0;
+int time_actual=0,time_inicial=0;
