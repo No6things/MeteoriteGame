@@ -154,6 +154,8 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		cont++;		
 		
 	}
+
+
 	
 	glTranslatef(-centroid.x, -centroid.y, -centroid.z);
 	// We have a model that has a certain amount of objects and textures.  We want to go through each object 

@@ -23,4 +23,7 @@ extern Texto info;	//cuadro de texto
 extern int time_actual,time_inicial;
 extern int milis,segs,mins,hours;
 
+extern bool golpe;
+extern float temblar;
+
 #endif
