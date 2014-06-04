@@ -151,9 +151,26 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		glRotatef (g_smooth_movement,0.0f,0.0f,1.0f);
 		g_smooth_movement--;
 		g_smooth_movement = max(g_smooth_movement, -25.0);
-		cont++;		
+			
 		
 	}
+
+	if (golpe && cont<5){
+		
+		glRotatef(20,0.0f,0.0f,1.0f);
+		cont++;
+	}
+
+	if (golpe && cont>=5){
+		glRotatef(-20,0.0f,0.0f,1.0f);
+		cont++;
+	}
+
+	if (cont>=10){
+	golpe=false;
+	cont=0;
+	}
+
 	
 	glTranslatef(-centroid.x, -centroid.y, -centroid.z);
 	// We have a model that has a certain amount of objects and textures.  We want to go through each object 

@@ -66,6 +66,10 @@ void Keyboard(unsigned char key, int x, int y) // callback para eventos del tecl
 		case 'p': //fullscreen
 			glutFullScreenToggle();
 			break;
+
+		case 'g': //golpe
+			golpe=!golpe;
+			break;
 		}
 }
 
