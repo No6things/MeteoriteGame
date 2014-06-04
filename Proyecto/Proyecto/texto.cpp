@@ -54,7 +54,7 @@ void Texto::FramesPerSecond(){
 	time_actual++;
 	
 	
-	if (time_actual==30){
+	if (time_actual==10){
 		time_actual=0;
 		segs++;
 	}

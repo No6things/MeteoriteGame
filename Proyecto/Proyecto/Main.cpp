@@ -16,7 +16,7 @@ void InitOpenGL()   // inicializa OpenGL
 }
 
 void Init(int argc, char* argv[]){  
-	  red.x=0.0f;red.y=1.f;red.z=0.f;
+	  red.x=255.0f;red.y=255.f;red.z=255.f; //color of fonts
 	  glutInit(&argc, argv);  //Iniciando GLUT y OpenGL
 	  glutInitWindowPosition(250,250);
 	  glutInitWindowSize(w, h);

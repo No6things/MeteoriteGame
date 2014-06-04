@@ -245,8 +245,10 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		glPushMatrix();
 			glScalef(5.0f, 5.0f, 5.0f);
 			glTranslated(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z);
-			if(distance(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z,centroid.x,centroid.y,centroid.z)>(radius+radius2))
+			if(distance(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z,centroid.x,centroid.y,centroid.z)>(radius+radius2)){
 				Draw_Model(asteroid);
+			}else cout<<"choque"<<endl;
+
 			asteroids_positions[i].x+=(0.5*speed_constant);
 		glPopMatrix();
 	}
