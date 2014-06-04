@@ -10,6 +10,7 @@ extern float g_TranslateX;
 extern float pi;
 extern bool izquierda,derecha;
 extern float speed_constant; //velocidad del meteoro
+extern float g_smooth_movement; //Suavidad de movimiento
 extern CVector3 asteroids_positions[101];
 extern CVector3 ship_position;
 extern CVector3 red;

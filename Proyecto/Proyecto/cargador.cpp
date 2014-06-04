@@ -138,8 +138,9 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		g_TranslateX-=5;
 		ship_position.z-=5;
 		glTranslatef (g_TranslateX,0.0f,0.0f);
-		glRotatef (25,0.0f,0.0f,1.0f);
-
+		glRotatef (g_smooth_movement,0.0f,0.0f,1.0f);
+		g_smooth_movement++;
+		g_smooth_movement = min(g_smooth_movement, 25.0);
 	}
 
 	else if (izquierda){
@@ -147,7 +148,9 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		g_TranslateX+=5;
 		ship_position.z+=5;
 		glTranslatef(g_TranslateX,0.0f,0.0f);
-		glRotatef (25,0.0f,0.0f,-1.0f);
+		glRotatef (g_smooth_movement,0.0f,0.0f,1.0f);
+		g_smooth_movement--;
+		g_smooth_movement = max(g_smooth_movement, -25.0);
 		cont++;		
 		
 	}
