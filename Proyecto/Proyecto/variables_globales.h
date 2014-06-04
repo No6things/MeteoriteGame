@@ -3,8 +3,11 @@
 #ifndef VARIABLES_GLOBALES_H
 #define VARIABLES_GLOBALES_H
 
+#define EASY			0
+#define GANONDORF       1
+#define TEMPLEOFWATER   2
 
-extern int main_window, h, w, mousex, mousey;
+extern int main_window, h, w, mousex, mousey, dificultad, ronda;
 extern int cont;
 extern float g_TranslateX;
 extern float pi;
@@ -12,6 +15,8 @@ extern bool izquierda,derecha;
 extern float speed_constant; //velocidad del meteoro
 extern float g_smooth_movement; //Suavidad de movimiento
 extern CVector3 asteroids_positions[101];
+extern int asteroids_passed[101];
+extern int asteroids_lowerb, asteroids_upperb;
 extern CVector3 ship_position;
 extern CVector3 red;
 extern CTextures Textures;

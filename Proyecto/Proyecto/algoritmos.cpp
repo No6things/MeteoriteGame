@@ -15,4 +15,11 @@ void calculateCentroid(CVector3 &centroid, t3DObject *pObject){
 	centroid.y/=pObject->numOfVerts;
 	centroid.z/=pObject->numOfVerts;
 }
-
+void calculateAsteroidsInitPos(int tam){
+	  for(int i=0;i<tam;i++){
+		asteroids_passed[i]=0;
+		asteroids_positions[i].x=-(rand()%10000-300);
+		asteroids_positions[i].y=(rand()%(h/2)-(h/2))+200;
+		asteroids_positions[i].z=(rand()%(w/2)-(w/2))+200;
+	  }
+}

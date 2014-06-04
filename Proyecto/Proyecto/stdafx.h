@@ -11,6 +11,7 @@ using namespace std;
 #include <stdlib.h>
 #include <string.h>
 #include <fstream>
+#include <time.h>
 #include <iostream>
 #include <XInput.h>
 #include "TextureObjects.h"

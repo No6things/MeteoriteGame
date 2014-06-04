@@ -19,7 +19,7 @@ void Display()  // funcion para dibujar todo!
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glLoadIdentity();
-	gluLookAt(4000,10,0,0,0,0,0,1,0);
+	gluLookAt(4000,10,0,0,0,0,0,1,0);	//position,focus point,up vector
 	//Calculando FPS. Se puede poner en un hilo
 	info.FramesPerSecond();
 	//Mostrando todo el texto
@@ -48,7 +48,8 @@ void Keyboard(unsigned char key, int x, int y) // callback para eventos del tecl
 			break;
 		case 127: //suprimir
 			break;
-
+		case 13: //enter
+			break;
 		case 'a': //derecha
 			izquierda=true;
 			derecha=false;

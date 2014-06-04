@@ -39,14 +39,15 @@ void Init(int argc, char* argv[]){
 	  glEnable(GL_LIGHT0);								// Turn on a light with defaults set
 	  glEnable(GL_LIGHTING);							// Turn on lighting
 	  glEnable(GL_COLOR_MATERIAL);						// Allow color
-
-	  asteroids_positions[0].x = 0.0; asteroids_positions[0].y = 0.0; asteroids_positions[0].z = 0.0;
-	  asteroids_positions[1].x = -20.0; asteroids_positions[1].y= 50.0; asteroids_positions[1].z = 65.0;
-	  asteroids_positions[2].x = -1000.0; asteroids_positions[2].y= 50.0; asteroids_positions[2].z = -120.0;
+	  calculateAsteroidsInitPos(101);					// Establishing asteroids initial position
+	  //asteroids_positions[0].x = 0.0; asteroids_positions[0].y = 0.0; asteroids_positions[0].z = 0.0;
+	  //asteroids_positions[1].x = -20.0; asteroids_positions[1].y= 50.0; asteroids_positions[1].z = 65.0;
+	  //asteroids_positions[2].x = -1000.0; asteroids_positions[2].y= 50.0; asteroids_positions[2].z = -120.0;
 }
 
 int main(int argc, char* argv[])
 {
+	srand((unsigned)time(NULL));
 	cout << "ษออออออออออออออออออออออออออออออป" << endl;
 	cout << "บ                              บ" << endl;
 	cout << "บ         Sin Nombre           บ" << endl;
