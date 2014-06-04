@@ -26,8 +26,7 @@ void Display()  // funcion para dibujar todo!
 	info.mostrarFPS(125,5,200,200,red,GLUT_BITMAP_HELVETICA_12,1);
 	
 	//Dibujando modelo
-	Draw_3DS_Object(0,0,0,500);
-	
+	Draw_3DS_Object(0,0,0,500);	
 	glutSwapBuffers();
 	glutPostRedisplay();
 
@@ -50,21 +49,21 @@ void Keyboard(unsigned char key, int x, int y) // callback para eventos del tecl
 		case 127: //suprimir
 			break;
 
-		case 'a':
+		case 'a': //derecha
 			izquierda=true;
 			derecha=false;
 			cont=0;
 			break;
 
-		case 'd':
+		case 'd': //izquierda
 			derecha=true;
 			izquierda=false;
 			cont=0;
 			break;
-		case 's':
+		case 's': //acelerar velocidad de los meteoros
 			speed_constant+=0.5f;
 			break;
-		case 'p':
+		case 'p': //fullscreen
 			glutFullScreenToggle();
 			break;
 		}

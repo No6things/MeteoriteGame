@@ -1,37 +1,29 @@
 #include "stdafx.h"
-#include "variables_globales.h"
-CLoad3DS g_Load3ds;							// This holds the 3D Model info that we load in
+//z mueve el eje horizontal -derecha + izquierda
+//y mueve el eje vertical   -abajo	 + arriba
+//x mueve el eje z			-atras   + delante
+CLoad3DS g_Load3ds;														// This holds the 3D Model info that we load in
+t3DModel g_3DModel, asteroid;											// This holds models
 UINT g_Texture[10] = {0}, g_AstTexture[10] = {0};						// This holds the texture info, referenced by an ID
-t3DModel g_3DModel, asteroid;
-int   g_ViewMode	  = GL_TRIANGLES;			// We want the default drawing mode to be normal
-bool  g_RotateObject  = true;					// Turn lighting on initially
-float g_RotateX		  = 0.0f;					// This is the current value at which the model is rotated
-float g_RotationSpeed = 0.8f;					// This is the speed that our model rotates.  (-speed rotates left)
-
+int   g_ViewMode	  = GL_TRIANGLES;									// We want the default drawing mode to be normal
 float astpos = 0.0f;
-//set up a structure for the texture system
-CTextures Textures;
-
 char* dir = "Assets/Models/Asteroid/asteroid 3DS.3ds";
-const bool DEBUG = true;		//Specify if information is written about what is going on to the console window
 
-CVector3 centroid;
 
 void Load_3DS_Object(char *path)
 {
+	int temp;
 	// Load the *.3DS file.  We just pass in an address to our t3DModel structure and the file name string we want to load
 	g_Load3ds.Import3DS(&g_3DModel, path);			// Load our .3DS file into our model structure
 	centroid.x = centroid.y = centroid.z  = 0;
 	t3DObject *pObject = &g_3DModel.pObject[0];
-	for(int i=0; i<pObject->numOfVerts; i++){
-		centroid.x+=pObject->pVerts[i].x;
-		centroid.y+=pObject->pVerts[i].y;
-		centroid.z+=pObject->pVerts[i].z;
-	}
-	centroid.x/=pObject->numOfVerts;
-	centroid.y/=pObject->numOfVerts;
-	centroid.z/=pObject->numOfVerts;
 	
+	calculateCentroid(centroid,&g_3DModel.pObject[0]); //calculating ship's centroid
+
+	ship_position.x=cos(276)*centroid.x + sin(276)*centroid.z; //position of the ship with a rotation of 276
+	ship_position.y=centroid.y;
+	ship_position.z=-sin(276)*centroid.x + cos(276)*centroid.z;
+	radius=593;
 	// Depending on how many textures we found, load each one
 	/*
 	for(int i = 0; i < g_3DModel.numOfMaterials; i++)
@@ -49,6 +41,10 @@ void Load_3DS_Object(char *path)
 	}
 	*/
 	g_Load3ds.Import3DS(&asteroid, dir);
+	calculateCentroid(centroid2,&asteroid.pObject[0]);
+	radius2=65;
+
+	cout<<"radio2-"<<radius2<<endl;
 }
 
 void Draw_Model(t3DModel Model){
@@ -133,10 +129,6 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 {
 	// We want the model to rotate around the axis so we give it a rotation
 	// value, then increase/decrease it. You can rotate right of left with the arrow keys.
-	/*if (cont==150)
-	g_RotateObject=false;
-	else
-		cont++; */
 
 	glPushMatrix();
 	glRotatef(276, 0.0f, 1.0f, 0.0f);
@@ -144,46 +136,27 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 
 	if (derecha){
 	
-	g_TranslateX-=5;
-	glTranslatef (g_TranslateX,0.0f,0.0f);
-	
-
-
-
+		g_TranslateX-=5;
+		ship_position.x-=5;
+		glTranslatef (g_TranslateX,0.0f,0.0f);
 		glRotatef (25,0.0f,0.0f,1.0f);
-		
-		
+
 	}
 
 	else if (izquierda){
 
-		
 		g_TranslateX+=5;
-
+		ship_position.x+=5;
 		glTranslatef(g_TranslateX,0.0f,0.0f);
-
-	
-
-
-	
 		glRotatef (25,0.0f,0.0f,-1.0f);
-		cont++;
-		
+		cont++;		
 		
 	}
 	
-	
-	// Rotate the object around the Y-Axis	
-	
-	// Increase the speed of rotation
-	
-	 
-
-
+	glTranslatef(-centroid.x, -centroid.y, -centroid.z);
 	// We have a model that has a certain amount of objects and textures.  We want to go through each object 
 	// in the model, bind it's texture map to it, then render it by going through all of it's faces (Polygons).
 	// Since we know how many objects our model has, go through each of them.
-	glTranslatef(-centroid.x, -centroid.y, -centroid.z);
 	for(int i = 0; i < g_3DModel.numOfObjects; i++)
 	{
 		// Make sure we have valid objects just in case. (size() is in the vector class)
@@ -260,13 +233,28 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		glEnd();			// End the model drawing
 	}
 	glPopMatrix();
-	for(int i=0; i<3; i++){
+	
+	glPushMatrix();		//bounding volume sphere
+		//glTranslatef(380.0f,200.0f,230.0f);
+		glTranslatef(ship_position.x,ship_position.y,ship_position.z);
+		glutWireSphere(radius,20,20);
+	glPopMatrix();
+	
+	for(int i=0; i<3; i++){ //drawing asteroids
 		glPushMatrix();
 			glScalef(5.0f, 5.0f, 5.0f);
 			glTranslated(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z);
-			Draw_Model(asteroid);
+			if(distance(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z,centroid.x,centroid.y,centroid.z)>(radius+radius2))
+				Draw_Model(asteroid);
 			asteroids_positions[i].x+=(0.5*speed_constant);
 		glPopMatrix();
 	}
-
+	/*glPushMatrix();   //bounding volume sphere
+		//glTranslatef(380.0f,200.0f,230.0f);
+		glScalef(5.0f, 5.0f, 5.0f);
+		Draw_Model(asteroid);
+	glPopMatrix();
+	glColor3f(255.0,255.0,255.0);
+	glutWireSphere(radius2,20,20);
+	*/
 }

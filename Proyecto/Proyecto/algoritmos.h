@@ -3,4 +3,6 @@
 #define ALGORITMOS_H
 
 
+float distance(float,float,float,float,float,float);
+void calculateCentroid(CVector3 &centroid, t3DObject *pObject);
 #endif
