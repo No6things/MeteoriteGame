@@ -3,6 +3,7 @@ int h=640, w=800, mousex, mousey, main_window,radius,radius2;
 int cont=0;
 float g_RotateY = 0.0f;
 float g_TranslateX=0.0f;
+float pi = 4*atan(1.0f);
 bool izquierda=false,derecha=false;
 float g_TranslateX2=0.0f;
 float speed_constant = 0.0f;

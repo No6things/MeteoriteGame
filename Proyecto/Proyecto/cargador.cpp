@@ -20,9 +20,9 @@ void Load_3DS_Object(char *path)
 	
 	calculateCentroid(centroid,&g_3DModel.pObject[0]); //calculating ship's centroid
 
-	ship_position.x=cos(276)*centroid.x + sin(276)*centroid.z; //position of the ship with a rotation of 276
+	ship_position.x=cos(276*pi/180.0)*centroid.x + sin(276*pi/180.0)*centroid.z; //position of the ship with a rotation of 276
 	ship_position.y=centroid.y;
-	ship_position.z=-sin(276)*centroid.x + cos(276)*centroid.z;
+	ship_position.z=-sin(276*pi/180.0)*centroid.x + cos(276*pi/180.0)*centroid.z;
 	radius=593;
 	// Depending on how many textures we found, load each one
 /*	for(int i = 0; i < g_3DModel.numOfMaterials; i++)
@@ -136,7 +136,7 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 	if (derecha){
 	
 		g_TranslateX-=5;
-		ship_position.x-=5;
+		ship_position.z-=5;
 		glTranslatef (g_TranslateX,0.0f,0.0f);
 		glRotatef (25,0.0f,0.0f,1.0f);
 
@@ -145,7 +145,7 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 	else if (izquierda){
 
 		g_TranslateX+=5;
-		ship_position.x+=5;
+		ship_position.z+=5;
 		glTranslatef(g_TranslateX,0.0f,0.0f);
 		glRotatef (25,0.0f,0.0f,-1.0f);
 		cont++;		

@@ -7,6 +7,7 @@
 extern int main_window, h, w, mousex, mousey;
 extern int cont;
 extern float g_TranslateX;
+extern float pi;
 extern bool izquierda,derecha;
 extern float speed_constant; //velocidad del meteoro
 extern CVector3 asteroids_positions[101];
