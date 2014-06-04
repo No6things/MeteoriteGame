@@ -25,8 +25,7 @@ void Load_3DS_Object(char *path)
 	ship_position.z=-sin(276)*centroid.x + cos(276)*centroid.z;
 	radius=593;
 	// Depending on how many textures we found, load each one
-	/*
-	for(int i = 0; i < g_3DModel.numOfMaterials; i++)
+/*	for(int i = 0; i < g_3DModel.numOfMaterials; i++)
 	{
 		// Check to see if there is a file name to load in this material
 		
@@ -38,8 +37,8 @@ void Load_3DS_Object(char *path)
 
 		// Set the texture ID for this material
 		g_3DModel.pMaterials[i].texureId = i;
-	}
-	*/
+} */
+	g_Load3ds = CLoad3DS();
 	g_Load3ds.Import3DS(&asteroid, dir);
 	calculateCentroid(centroid2,&asteroid.pObject[0]);
 	radius2=65;
@@ -204,7 +203,6 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 					// If the object has a texture associated with it, give it a texture coordinate.
 					if(pObject->bHasTexture) 
 					{
-
 						// Make sure there was a UVW map applied to the object or else it won't have tex coords.
 						if(pObject->pTexVerts) 
 						{
