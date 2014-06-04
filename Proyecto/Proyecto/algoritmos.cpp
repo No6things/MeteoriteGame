@@ -18,8 +18,12 @@ void calculateCentroid(CVector3 &centroid, t3DObject *pObject){
 void calculateAsteroidsInitPos(int tam){
 	  for(int i=0;i<tam;i++){
 		asteroids_passed[i]=0;
-		asteroids_positions[i].x=-(rand()%10000-300);
-		asteroids_positions[i].y=(rand()%(h/2)-(h/2))+200;
+		asteroids_positions[i].x=-(rand()%900);
+		asteroids_positions[i].y=(rand()%(h/3)-(h/3))+200;
 		asteroids_positions[i].z=(rand()%(w/2)-(w/2))+200;
 	  }
+}
+bool chocamos(int i){
+	if(distance(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z,ship_position.x,ship_position.y,ship_position.z)>(radius+radius2)) return false;
+	else return true;
 }

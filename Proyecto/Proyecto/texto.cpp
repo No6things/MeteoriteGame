@@ -60,6 +60,7 @@ void Texto::FramesPerSecond(){
 	}
 
 	if (segs==60){
+		wave_started=NO;
 		segs=0;
 		mins++;
 	}

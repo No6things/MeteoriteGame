@@ -2,12 +2,15 @@
 //z mueve el eje horizontal -derecha + izquierda
 //y mueve el eje vertical   -abajo	 + arriba
 //x mueve el eje z			-atras   + delante
+#define MAX_OBJECTS 204
 CLoad3DS g_Load3ds;														// This holds the 3D Model info that we load in
 t3DModel g_3DModel, asteroid;											// This holds models
 UINT g_Texture[10] = {0}, g_AstTexture[10] = {0};						// This holds the texture info, referenced by an ID
 int   g_ViewMode	  = GL_TRIANGLES;									// We want the default drawing mode to be normal
 float astpos = 0.0f;
 char* dir = "Assets/Models/Asteroid/asteroid 3DS.3ds";
+int idList;
+bool support_list;
 
 
 void Load_3DS_Object(char *path)
@@ -43,84 +46,60 @@ void Load_3DS_Object(char *path)
 	calculateCentroid(centroid2,&asteroid.pObject[0]);
 	radius2=65;
 
-	cout<<"radio2-"<<radius2<<endl;
 }
 
-void Draw_Model(t3DModel Model){
-	for(int i = 0; i < Model.numOfObjects; i++)
-	{
-		// Make sure we have valid objects just in case. (size() is in the vector class)
+void Draw_Model(t3DModel & Model, UINT *Texture){
+	for(int i = 0; i <Model.numOfObjects; i++){
 		if(Model.pObject.size() <= 0) break;
 
-		// Get the current object that we are displaying
 		t3DObject *pObject = &Model.pObject[i];
 			
-		// Check to see if this object has a texture map, if so bind the texture to it.
-		if(pObject->bHasTexture) 
-		{
-			// Turn on texture mapping and turn off color
+		if(pObject->bHasTexture){
 			glEnable(GL_TEXTURE_2D);
-
-			// Reset the color to normal again
 			glColor3ub(255, 255, 255);
-
-			// Bind the texture map to the object by it's materialID
-			glBindTexture(GL_TEXTURE_2D, g_Texture[pObject->materialID]);
-		} 
-		else 
-		{
-			// Turn off texture mapping and turn on color
+			glBindTexture(GL_TEXTURE_2D, Texture[pObject->materialID]);
+		}else{
 			glDisable(GL_TEXTURE_2D);
-
-			// Reset the color to normal again
 			glColor3ub(255, 255, 255);
 		}
-
-		// This determines if we are in wireframe or normal mode
-		glBegin(g_ViewMode);					// Begin drawing with our selected mode (triangles or lines)
-
-			// Go through all of the faces (polygons) of the object and draw them
-			for(int j = 0; j < pObject->numOfFaces; j++)
-			{
-				// Go through each corner of the triangle and draw it.
-				for(int whichVertex = 0; whichVertex < 3; whichVertex++)
-				{
-					// Get the index for each point of the face
+		glBegin(GL_TRIANGLES);
+			for(int j = 0; j < pObject->numOfFaces; j++){
+				for(int whichVertex = 0; whichVertex < 3; whichVertex++){
 					int index = pObject->pFaces[j].vertIndex[whichVertex];
-			
-					// Give OpenGL the normal for this vertex.
 					glNormal3f(pObject->pNormals[index].x, pObject->pNormals[index].y, pObject->pNormals[index].z);
-				
-					// If the object has a texture associated with it, give it a texture coordinate.
-					if(pObject->bHasTexture) 
-					{
 
-						// Make sure there was a UVW map applied to the object or else it won't have tex coords.
-						if(pObject->pTexVerts) 
-						{
-							//
-							glTexCoord2f(pObject->pTexVerts[ index ].x, pObject->pTexVerts[ index ].y);
-						}
-					} 
-					else  //Does not have texture
-					{
-						// if the size is at > 1 and material ID != -1, then it is a valid material.
-						if(Model.pMaterials.size() && pObject->materialID >= 0) 
-						{
-							// Get and set the color that the object is, since it must not have a texture
-							BYTE *pColor = Model.pMaterials[pObject->materialID].color;
-
-							// Assign the current color to this model
-							glColor3ub(pColor[0], pColor[1], pColor[2]);
+					if(pObject->bHasTexture){
+						if(pObject->pTexVerts)
+							glTexCoord2f(pObject->pTexVerts[ index ].x, pObject->pTexVerts[index].y);
+						
+					}else{ // if the size is at > 1 and material ID != -1, then it is a valid material.
+						if(g_3DModel.pMaterials.size() && pObject->materialID >= 0){
+							BYTE *pColor = g_3DModel.pMaterials[pObject->materialID].color; // Get and set the color that the object is, since it must not have a texture
+							glColor3ub(pColor[0], pColor[1], pColor[2]);// Assign the current color to this model
 						}
 					}
-
 					// Pass in the current vertex of the object (Corner of current face)
-					glVertex3f(pObject->pVerts[ index ].x, pObject->pVerts[ index ].y, pObject->pVerts[ index ].z);
+					glVertex3f(pObject->pVerts[index].x, pObject->pVerts[index].y, pObject->pVerts[index].z); //Esta son las coordenadas iniciales que tiene el objeto :P 
 				}
 			}
+		glEnd();// End the model drawing
+	}
+}
 
-		glEnd();			// End the model drawing
+void CreateList(){
+	idList = glGenLists(204);
+	support_list = idList > 0;
+	if(support_list){
+		//Lista de la nave:
+		glNewList(idList, GL_COMPILE); //Nave :P 
+			Draw_Model(g_3DModel, g_Texture);
+		glEndList();
+		for(int i=1; i<MAX_OBJECTS-1; ++i){ //Lista de los asteroides
+			glNewList(idList+i, GL_COMPILE); //Asteroide i-ésimo 
+				Draw_Model(asteroid, g_AstTexture);
+			glEndList();
+		}
+		//Falta la luna :)
 	}
 }
 /******************************************* DrawObject *******************************************/
@@ -132,36 +111,34 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 	glPushMatrix();
 	glRotatef(276, 0.0f, 1.0f, 0.0f);
 	glTranslatef(centroid.x, centroid.y, centroid.z);
-
-	if (derecha){
+	if(!golpe){
+		if (derecha){
 	
-		g_TranslateX-=40;
-		ship_position.z-=40;
-		glTranslatef (g_TranslateX,0.0f,0.0f);
-		glRotatef (g_smooth_movement,0.0f,0.0f,1.0f);
-		g_smooth_movement++;
-		g_smooth_movement = min(g_smooth_movement, 25.0);
-	}
+			g_TranslateX-=40;
+			ship_position.z-=40;
+			glTranslatef (g_TranslateX,0.0f,0.0f);
+			glRotatef (g_smooth_movement,0.0f,0.0f,1.0f);
+			g_smooth_movement++;
+			g_smooth_movement = min(g_smooth_movement, 25.0);
+		}
 
-	else if (izquierda){
+		else if (izquierda){
 
-		g_TranslateX+=40;
-		ship_position.z+=40;
-		glTranslatef(g_TranslateX,0.0f,0.0f);
-		glRotatef (g_smooth_movement,0.0f,0.0f,1.0f);
-		g_smooth_movement--;
-		g_smooth_movement = max(g_smooth_movement, -25.0);
+			g_TranslateX+=40;
+			ship_position.z+=40;
+			glTranslatef(g_TranslateX,0.0f,0.0f);
+			glRotatef (g_smooth_movement,0.0f,0.0f,1.0f);
+			g_smooth_movement--;
+			g_smooth_movement = max(g_smooth_movement, -25.0);
 			
 		
-	}
-
-	if (golpe && cont<5){
+		}
+	}else if (cont<5){
 		
 		glRotatef(20,0.0f,0.0f,1.0f);
 		cont++;
-	}
 
-	if (golpe && cont>=5){
+	}else if (cont>=5 && cont<10){
 		glRotatef(-20,0.0f,0.0f,1.0f);
 		cont++;
 	}
@@ -173,130 +150,77 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 
 	
 	glTranslatef(-centroid.x, -centroid.y, -centroid.z);
-	// We have a model that has a certain amount of objects and textures.  We want to go through each object 
-	// in the model, bind it's texture map to it, then render it by going through all of it's faces (Polygons).
-	// Since we know how many objects our model has, go through each of them.
-	for(int i = 0; i < g_3DModel.numOfObjects; i++)
-	{
-		// Make sure we have valid objects just in case. (size() is in the vector class)
-		if(g_3DModel.pObject.size() <= 0) break;
-
-		// Get the current object that we are displaying
-		t3DObject *pObject = &g_3DModel.pObject[i];
-			
-		// Check to see if this object has a texture map, if so bind the texture to it.
-		if(pObject->bHasTexture) 
-		{
-			// Turn on texture mapping and turn off color
-			glEnable(GL_TEXTURE_2D);
-
-			// Reset the color to normal again
-			glColor3ub(255, 255, 255);
-
-			// Bind the texture map to the object by it's materialID
-			glBindTexture(GL_TEXTURE_2D, g_Texture[pObject->materialID]);
-		} 
-		else 
-		{
-			// Turn off texture mapping and turn on color
-			glDisable(GL_TEXTURE_2D);
-
-			// Reset the color to normal again
-			glColor3ub(255, 255, 255);
-		}
-
-		// This determines if we are in wireframe or normal mode
-		glBegin(g_ViewMode);					// Begin drawing with our selected mode (triangles or lines)
-
-			// Go through all of the faces (polygons) of the object and draw them
-			for(int j = 0; j < pObject->numOfFaces; j++)
-			{
-				// Go through each corner of the triangle and draw it.
-				for(int whichVertex = 0; whichVertex < 3; whichVertex++)
-				{
-					// Get the index for each point of the face
-					int index = pObject->pFaces[j].vertIndex[whichVertex];
-			
-					// Give OpenGL the normal for this vertex.
-					glNormal3f(pObject->pNormals[index].x, pObject->pNormals[index].y, pObject->pNormals[index].z);
-				
-					// If the object has a texture associated with it, give it a texture coordinate.
-					if(pObject->bHasTexture) 
-					{
-						// Make sure there was a UVW map applied to the object or else it won't have tex coords.
-						if(pObject->pTexVerts) 
-						{
-							//
-							glTexCoord2f(pObject->pTexVerts[ index ].x, pObject->pTexVerts[ index ].y);
-						}
-					} 
-					else  //Does not have texture
-					{
-						// if the size is at > 1 and material ID != -1, then it is a valid material.
-						if(g_3DModel.pMaterials.size() && pObject->materialID >= 0) 
-						{
-							// Get and set the color that the object is, since it must not have a texture
-							BYTE *pColor = g_3DModel.pMaterials[pObject->materialID].color;
-
-							// Assign the current color to this model
-							glColor3ub(pColor[0], pColor[1], pColor[2]);
-						}
-					}
-
-					// Pass in the current vertex of the object (Corner of current face)
-					glVertex3f(pObject->pVerts[ index ].x, pObject->pVerts[ index ].y, pObject->pVerts[ index ].z);
-				}
-			}
-
-		glEnd();			// End the model drawing
-	}
+	if(support_list)
+		glCallList(idList); //Dibujar nave
+	else
+		Draw_Model(g_3DModel, g_Texture);
 	glPopMatrix();
 	
 	/*glPushMatrix();		//bounding volume sphere
 		glTranslatef(ship_position.x,ship_position.y,ship_position.z);
 		glutWireSphere(radius,20,20);
 	glPopMatrix();*/
-	if (segs%6==0){		//Dificultad aumentada
-		
-		speed_constant+=8;
+	if(segs%6==0)speed_constant+=6;
 
-		if(dificultad==EASY)ronda=rand()%4+3; //round of meteors
-		else ronda=rand()%8+5;
+	if (segs%3==0){		//Rondas
 
-		if (asteroids_upperb+ronda<101){ //desplazamiento de rango -- normal
-			cout<<"chill pill"<<endl;
-			asteroids_lowerb=asteroids_upperb;
-			asteroids_upperb+=ronda;
+		if(wave_started==NO){      //Control de estados para evitar movernos de rango varias veces en un segundo
 
-		}else if(asteroids_upperb+ronda>=101 && dificultad==EASY){	// ultimo rango de meteoritos
-			cout<<"no eres tan malo- ahi viene la recta final"<<endl;
-			asteroids_lowerb=asteroids_upperb;
-			asteroids_upperb=101;
-			dificultad++;
-		}else if(dificultad==GANONDORF){						//reiniciando secuencia de meteoros
-			speed_constant=55;
-			cout<<"reiniciando ronda"<<endl;
-			calculateAsteroidsInitPos(101);
-			asteroids_lowerb=0;
-			asteroids_upperb=rand()%ronda;
+			wave_started=YES;
+			
+			if(segs!=0){						///establishment of rounds
 
-		}else{ //lanzar luna
-			cout<<"¡¡¡¡¡¡Link's nightmare is coming!!!!!!"<<endl;
+				if(dificultad==EASY)ronda=rand()%2+3; 
+				else ronda=rand()%4+4;
+			}else asteroids_upperb+=rand()%2+3;
+
+			if (asteroids_upperb+ronda<101){		//desplazamiento de rango normal
+				cout<<"chill pill"<<endl;
+				asteroids_lowerb=asteroids_upperb;
+				asteroids_upperb+=ronda;
+
+			}else if(asteroids_upperb+ronda>=101 && dificultad==EASY){	// ultimo rango de meteoritos
+				cout<<"no eres tan malo- ahi viene la recta final"<<endl;
+				asteroids_lowerb=asteroids_upperb;
+				asteroids_upperb=101;
+				dificultad++;
+			}else if(dificultad==GANONDORF){						//reiniciando secuencia de meteoros
+				speed_constant=55;
+				cout<<"reiniciando ronda"<<endl;
+				calculateAsteroidsInitPos(101);
+				asteroids_lowerb=0;
+				asteroids_upperb=rand()%ronda;
+
+			}else{ //lanzar luna
+				cout<<"¡¡¡¡¡¡Link's nightmare is coming!!!!!!"<<endl;
+			}
 		}
+	}else if (segs%6==5){										   //cambiando de estado
 
+		wave_started=NO;
 	}
-	for(int i=asteroids_lowerb; i<asteroids_upperb; i++){ //drawing asteroids
-		
+
+	for(int i=0; i<asteroids_upperb; i++){ //drawing asteroids
+	
 		glPushMatrix();
-			if(!asteroids_passed[i] && distance(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z,ship_position.x,ship_position.y,ship_position.z)>(radius+radius2)){
-				glScalef(5.0f, 5.0f, 5.0f);
-				glTranslated(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z);
-				Draw_Model(asteroid);
-			}else{//insertar llamada a animacion y salir de juego
-				asteroids_passed[i]=1;
-				cout<<"chocamos con el asteroide - "<<i<<endl; 
+
+			if(!asteroids_passed[i]){
+				if (!chocamos(i)){
+
+					glScalef(5.0f, 5.0f, 5.0f);
+					glTranslated(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z);
+					if(support_list)
+						glCallList(idList+1+i); //Dibujar nave
+					else
+						Draw_Model(asteroid, g_AstTexture);
+				}else{//insertar llamada a animacion y salir de juego
+					asteroids_passed[i]=1;
+					cout<<"chocamos con el asteroide - "<<i<<endl; 
+					//golpe=true;
+				}
 			}
 			asteroids_positions[i].x+=(0.5*speed_constant);
+			if (asteroids_positions[i].x>=4000)asteroids_passed[i]=1;
 		glPopMatrix();
 	}
 	/*glPushMatrix();   //bounding volume sphere
