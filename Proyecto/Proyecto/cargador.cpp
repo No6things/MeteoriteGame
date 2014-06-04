@@ -144,10 +144,9 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 	}
 
 	if (cont>=10){
-	golpe=false;
-	cont=0;
+		golpe=false;
+		cont=0;
 	}
-
 	
 	glTranslatef(-centroid.x, -centroid.y, -centroid.z);
 	if(support_list)
@@ -156,49 +155,41 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		Draw_Model(g_3DModel, g_Texture);
 	glPopMatrix();
 	
-	/*glPushMatrix();		//bounding volume sphere
+	glPushMatrix();		//bounding volume sphere
 		glTranslatef(ship_position.x,ship_position.y,ship_position.z);
 		glutWireSphere(radius,20,20);
-	glPopMatrix();*/
-	if(segs%6==0)speed_constant+=6;
+	glPopMatrix();
 
-	if (segs%3==0){		//Rondas
+	if(segs%6==0)if(wave_started==NO)speed_constant+=3;  //aumentamos la velocidad cada 6 segundos
 
-		if(wave_started==NO){      //Control de estados para evitar movernos de rango varias veces en un segundo
+	if (segs%3==0){						//pero hacemos rondas de meteoros cada 3 segundo por la velocidad de los mismo
+		if(wave_started==NO){			//control de estados para evitar movernos de rango varias veces en un segundo
+			wave_started=YES;		
+															//Establecimiento de rondas dependiendo del nivel
+			if(dificultad==EASY)ronda=rand()%2+3;				//---Si es facil, 3-4 meteroso
+			else ronda=rand()%4+4;								//---Si no, 4-5
 
-			wave_started=YES;
-			
-			if(segs!=0){						///establishment of rounds
-
-				if(dificultad==EASY)ronda=rand()%2+3; 
-				else ronda=rand()%4+4;
-			}else asteroids_upperb+=rand()%2+3;
-
-			if (asteroids_upperb+ronda<101){		//desplazamiento de rango normal
+			if (asteroids_upperb+ronda<101){						//Desplazamiento de rango normal
 				cout<<"chill pill"<<endl;
-				asteroids_lowerb=asteroids_upperb;
 				asteroids_upperb+=ronda;
 
 			}else if(asteroids_upperb+ronda>=101 && dificultad==EASY){	// ultimo rango de meteoritos
 				cout<<"no eres tan malo- ahi viene la recta final"<<endl;
-				asteroids_lowerb=asteroids_upperb;
 				asteroids_upperb=101;
-				dificultad++;
+				dificultad++;											//cambiando a dificultad GANONDORF || TEMPLEOFWATER
+
 			}else if(dificultad==GANONDORF){						//reiniciando secuencia de meteoros
-				speed_constant=55;
 				cout<<"reiniciando ronda"<<endl;
+				speed_constant=30;
 				calculateAsteroidsInitPos(101);
-				asteroids_lowerb=0;
-				asteroids_upperb=rand()%ronda;
+				asteroids_upperb=ronda;
 
 			}else{ //lanzar luna
 				cout<<"¡¡¡¡¡¡Link's nightmare is coming!!!!!!"<<endl;
 			}
 		}
-	}else if (segs%6==5){										   //cambiando de estado
+	}else if (segs%6==5)wave_started=NO;								//cambiando de estado
 
-		wave_started=NO;
-	}
 
 	for(int i=0; i<asteroids_upperb; i++){ //drawing asteroids
 	
@@ -206,9 +197,9 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 
 			if(!asteroids_passed[i]){
 				if (!chocamos(i)){
-
 					glScalef(5.0f, 5.0f, 5.0f);
 					glTranslated(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z);
+
 					if(support_list)
 						glCallList(idList+1+i); //Dibujar nave
 					else
@@ -218,8 +209,10 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 					cout<<"chocamos con el asteroide - "<<i<<endl; 
 					//golpe=true;
 				}
+				asteroids_positions[i].x+=(0.5*speed_constant);
+
 			}
-			asteroids_positions[i].x+=(0.5*speed_constant);
+
 			if (asteroids_positions[i].x>=4000)asteroids_passed[i]=1;
 		glPopMatrix();
 	}

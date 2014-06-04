@@ -18,7 +18,7 @@ extern float speed_constant; //velocidad del meteoro
 extern float g_smooth_movement; //Suavidad de movimiento
 extern CVector3 asteroids_positions[101];
 extern int asteroids_passed[101];
-extern int asteroids_lowerb, asteroids_upperb,wave_started;
+extern int  asteroids_upperb,wave_started;
 extern CVector3 ship_position;
 extern CVector3 red;
 extern CTextures Textures;

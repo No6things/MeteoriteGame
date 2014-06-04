@@ -19,7 +19,7 @@ void calculateAsteroidsInitPos(int tam){
 	  for(int i=0;i<tam;i++){
 		asteroids_passed[i]=0;
 		asteroids_positions[i].x=-(rand()%900);
-		asteroids_positions[i].y=(rand()%(h/3)-(h/3))+200;
+		asteroids_positions[i].y=(rand()%(h/3)-(h/3))+150;
 		asteroids_positions[i].z=(rand()%(w/2)-(w/2))+200;
 	  }
 }
