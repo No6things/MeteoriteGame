@@ -160,14 +160,14 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		glutWireSphere(radius,20,20);
 	glPopMatrix();
 
-	if(segs%6==0)if(wave_started==NO)speed_constant+=3;  //aumentamos la velocidad cada 6 segundos
+	if(segs%20==0)if(wave_started==NO)speed_constant+=2;  //Velocidad ++ cada 6 segundos
 
-	if (segs%3==0){						//pero hacemos rondas de meteoros cada 3 segundo por la velocidad de los mismo
+	if (segs%4==0){						//pero hacemos rondas de meteoros cada 3 segundo por la velocidad de los mismo
 		if(wave_started==NO){			//control de estados para evitar movernos de rango varias veces en un segundo
 			wave_started=YES;		
 															//Establecimiento de rondas dependiendo del nivel
-			if(dificultad==EASY)ronda=rand()%2+3;				//---Si es facil, 3-4 meteroso
-			else ronda=rand()%4+4;								//---Si no, 4-5
+			if(dificultad==EASY)ronda=rand()%2+2;				//---Si es facil, 3-4 meteroso
+			else ronda=rand()%4+2;								//---Si no, 4-5
 
 			if (asteroids_upperb+ronda<101){						//Desplazamiento de rango normal
 				cout<<"chill pill"<<endl;
@@ -188,7 +188,7 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 				cout<<"¡¡¡¡¡¡Link's nightmare is coming!!!!!!"<<endl;
 			}
 		}
-	}else if (segs%6==5)wave_started=NO;								//cambiando de estado
+	}else if (segs%4==3)wave_started=NO;								//cambiando de estado
 
 
 	for(int i=0; i<asteroids_upperb; i++){ //drawing asteroids
@@ -209,8 +209,9 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 					cout<<"chocamos con el asteroide - "<<i<<endl; 
 					golpe=true;
 					vidas--;
+					if (vidas==0)final_result=LOSER;
 				}
-				asteroids_positions[i].x+=max((0.5*speed_constant),80);
+				asteroids_positions[i].x+=min((0.5*speed_constant),80);
 
 			}
 

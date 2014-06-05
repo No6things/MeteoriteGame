@@ -1,6 +1,7 @@
 #include "stdafx.h"
-int h=640, w=800, mousex, mousey, main_window,radius,radius2, dificultad=EASY, ronda, wave_started=NO;
+int h=640, w=800, mousex, mousey, main_window,radius,radius2, dificultad=EASY, ronda, wave_started=NO,final_result=-1;
 int cont=0;
+int segsf=-1,minsf=-1,horasf=-1;
 float g_RotateY = 0.0f;
 float g_TranslateX=0.0f;
 float g_smooth_movement = 0.0f;
@@ -13,7 +14,7 @@ CVector3 asteroids_positions[101];
 int asteroids_passed[101];
 extern int asteroids_upperb=0;
 CVector3 ship_position;
-Texto info("*****Sin Nombre******");
+Texto info("Skeip");
 CVector3 red;
 CVector3 centroid;	
 CVector3 centroid2;

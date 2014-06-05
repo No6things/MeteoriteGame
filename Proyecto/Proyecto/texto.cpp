@@ -75,9 +75,20 @@ void Texto::FramesPerSecond(){
 void Texto::mostrarFPS(float x, float y, int width, int height, CVector3 colorF,void* font,int depth){
 	sprintf_s(msj1, "%s FPS: %.2f Vidas: %d Tiempo: %d:%d:%d",projectName, fps,vidas,hours,mins,segs);
 	mostrarTexto(msj1, x, y, width, height, colorF,font,depth);
+}
 
-	if (vidas==0){
-	//PERDISTE
-		//SISTEMPAUSE
+void Texto::mostrarResultado(float x, float y, int width, int height, CVector3 colorF,void* font,int depth){
+	if(segsf==-1){
+		segsf=segs;
+		minsf=mins;
+		horasf=hours;
+	}
+	if(final_result==LOSER){
+		sprintf_s(msj1, "HAS PERDIDO :C \n Tu Record ha sido %d:%d:%d", horasf,minsf,segsf);
+		mostrarTexto(msj1, x, y, width, height, colorF,font,depth);
+
+	}else if(final_result==WINNER){
+		sprintf_s(msj1, "¡¡FELICITACIONES!!\n Tu Record ha sido %d:%d:%d", horasf,minsf,segsf);
+		mostrarTexto(msj1, x, y, width, height, colorF,font,depth);
 	}
 }

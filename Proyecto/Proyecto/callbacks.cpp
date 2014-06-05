@@ -22,20 +22,24 @@ void Display()  // funcion para dibujar todo!
 	gluLookAt(4000,10,0,0,0,0,0,1,0);	//position,focus point,up vector
 	//Calculando FPS. Se puede poner en un hilo
 	info.FramesPerSecond();
-	//Mostrando todo el texto
-	info.mostrarFPS(90,5,200,200,red,GLUT_BITMAP_HELVETICA_12,1);
+	//Mostrando resultado
+	if(final_result==-1){
+		//Mostrando todo el texto
+		info.mostrarFPS(90,5,200,200,red,GLUT_BITMAP_HELVETICA_12,1);
 	
-	//Dibujando modelo
-	GLfloat mat_ambient[] = { 0.04f, 0.28f, 0.36f, 1.0f };
-	GLfloat mat_diffuse[] = { 0.05f, 0.5f, 0.9f, 1.0f };
-	GLfloat mat_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	GLfloat mat_shininess[] = { 90.0f };
+		//Dibujando modelo
+		GLfloat mat_ambient[] = { 0.04f, 0.28f, 0.36f, 1.0f };
+		GLfloat mat_diffuse[] = { 0.05f, 0.5f, 0.9f, 1.0f };
+		GLfloat mat_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+		GLfloat mat_shininess[] = { 90.0f };
 
-	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
-	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-	glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
-	Draw_3DS_Object(0,0,0,500);	
+		glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+		glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+		glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+		glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
+		Draw_3DS_Object(0,0,0,500);	
+	}else 	info.mostrarResultado(50,90,200,200,red,GLUT_BITMAP_HELVETICA_18,1);
+
 	glutSwapBuffers();
 	glutPostRedisplay();
 

@@ -21,7 +21,7 @@ void Init(int argc, char* argv[]){
 	  glutInitWindowPosition(250,250);
 	  glutInitWindowSize(w, h);
 	  glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE |GLUT_DEPTH);
-	  main_window= glutCreateWindow("*****Sin Nombre******");
+	  main_window= glutCreateWindow("Skeip");
 
 	  InitOpenGL();
 

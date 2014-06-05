@@ -6,6 +6,7 @@ class Texto{
 	private:
 		int frame,time,timebase;
 		char msj1[255];
+		char msj0[255];
 		char *projectName;
 		GLfloat fps;
 
@@ -14,6 +15,7 @@ class Texto{
 		void FramesPerSecond();
 		void mostrarTexto(char*, float, float, int, int, CVector3, void*,int);
 		void mostrarFPS(float, float, int, int, CVector3, void*, int);
+		void mostrarResultado(float, float, int, int, CVector3, void*, int);
 };
 
 #endif
