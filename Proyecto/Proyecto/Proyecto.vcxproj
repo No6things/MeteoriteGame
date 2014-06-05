@@ -41,10 +41,23 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Rodolfo\Documents\GitHub\SupahProject\SFML-2.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <IgnoreSpecificDefaultLibraries>libc.lib</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>sfml-window-d.lib;sfml-graphics-d.lib;sfm-system-d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Rodolfo\Documents\GitHub\SupahProject\SFML-2.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Rodolfo\Documents\GitHub\SupahProject\SFML-2.1\include\SFML;C:\Users\Rodolfo\Documents\GitHub\SupahProject\SFML-2.1\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>sfml-window-d.lib;sfml-graphics-d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Rodolfo\Documents\GitHub\SupahProject\SFML-2.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -52,8 +65,11 @@
     <ClCompile Include="algoritmos.cpp" />
     <ClCompile Include="callbacks.cpp" />
     <ClCompile Include="cargador.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="JPEG.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="SplashScreen.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="texto.cpp" />
     <ClCompile Include="TextureObjects.cpp" />
@@ -64,13 +80,17 @@
     <ClInclude Include="algoritmos.h" />
     <ClInclude Include="callbacks.h" />
     <ClInclude Include="cargador.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Graphics.hpp" />
     <ClInclude Include="JPEG.h" />
     <ClInclude Include="jpeglib.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="texto.h" />
     <ClInclude Include="TextureObjects.h" />
     <ClInclude Include="variables_globales.h" />
+    <ClInclude Include="Window.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="jpeg.lib" />
