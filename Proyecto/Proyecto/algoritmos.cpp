@@ -2,7 +2,7 @@
 
 float distance(float x2, float y2, float z2, float x, float y, float z){
 	float hueres=(x2-x)*(x2-x)+(y2-y)*(y2-y)+(z2-z)*(z2-z);
-	return sqrtf(hueres);
+	return hueres;
 }
 
 void calculateCentroid(CVector3 &centroid, t3DObject *pObject){
@@ -24,6 +24,6 @@ void calculateAsteroidsInitPos(int tam){
 	  }
 }
 bool chocamos(int i){
-	if(distance(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z,ship_position.x,ship_position.y,ship_position.z)>(radius+radius2)) return false;
+	if(distance(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z,ship_position.x,ship_position.y,ship_position.z)> (radius+radius2) * (radius+radius2)) return false;
 	else return true;
 }
