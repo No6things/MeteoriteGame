@@ -36,4 +36,5 @@ extern float LightPos[] ;   // Light Position
 extern float LightAmb[] ;  // Ambient Light Values
 extern float LightDif[]  ; // Diffuse Light Values
 extern float LightSpc[]   ;// Specular Light Values
+extern int vidas;
 #endif

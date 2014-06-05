@@ -207,7 +207,8 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 				}else{					//insertar llamada a animacion y salir de juego
 					asteroids_passed[i]=1;
 					cout<<"chocamos con el asteroide - "<<i<<endl; 
-					//golpe=true;
+					golpe=true;
+					vidas--;
 				}
 				asteroids_positions[i].x+=max((0.5*speed_constant),80);
 

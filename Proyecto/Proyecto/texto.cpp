@@ -73,6 +73,11 @@ void Texto::FramesPerSecond(){
 }
 
 void Texto::mostrarFPS(float x, float y, int width, int height, CVector3 colorF,void* font,int depth){
-	sprintf_s(msj1, "%s FPS: %.2f Vidas: %d Tiempo: %d:%d:%d",projectName, fps,3,hours,mins,segs);
+	sprintf_s(msj1, "%s FPS: %.2f Vidas: %d Tiempo: %d:%d:%d",projectName, fps,vidas,hours,mins,segs);
 	mostrarTexto(msj1, x, y, width, height, colorF,font,depth);
+
+	if (vidas==0){
+	//PERDISTE
+		//SISTEMPAUSE
+	}
 }

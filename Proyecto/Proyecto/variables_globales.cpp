@@ -27,3 +27,4 @@ float LightPos[]= {4.0f,3.0f,0.0f,0.0f};   // Light Position
 float LightAmb[]={1.0f,0.0f,0.0f,1.0f} ;  // Ambient Light Values
 float LightDif[]={0.0f,0.5f,0.0f,1.0f}  ; // Diffuse Light Values
 float LightSpc[]={0.0f,1.0f,0.0f,1.0f}   ;// Specular Light Values
+int vidas=20;
