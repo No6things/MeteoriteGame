@@ -1,7 +1,7 @@
+#pragma once
 #ifndef _XBOX_CONTROLLER_H_
 #define _XBOX_CONTROLLER_H_
-
-#pragma once
+#include <XInput.h>
 class XBOXcontroller{
 	private:
 		//Atributtes:

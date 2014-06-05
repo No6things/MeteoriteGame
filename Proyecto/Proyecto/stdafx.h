@@ -20,7 +20,7 @@ using namespace std;
 #include "texto.h"
 #include "variables_globales.h"
 #include "algoritmos.h"
-#include "XBOX.h"
+#include "xbox.h"
 #include "callbacks.h"
 
 

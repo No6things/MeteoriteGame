@@ -30,7 +30,7 @@ void Init(int argc, char* argv[]){
 	  glClearDepth(1.0f);									// Estado inicial del depth buffer
 	  glEnable(GL_DEPTH_TEST);							// Testeo del depth buffer
 	  glDepthFunc(GL_LEQUAL);								// Tipo de testeo
-	//glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
+	  glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
 
 	  //Cargando modelo de nave
 	  Load_3DS_Object("Assets/Models/Firebird/Firebird.3ds"); 
