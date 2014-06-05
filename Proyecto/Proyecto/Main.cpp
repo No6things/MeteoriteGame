@@ -24,33 +24,52 @@ void Init(int argc, char* argv[]){
 	  main_window= glutCreateWindow("Skeip");
 
 	  InitOpenGL();
-
-	  glEnable(GL_TEXTURE_2D);							// Habilitando mapeo de texturas
-	  glShadeModel(GL_SMOOTH);							// Shader
+	  
+	  glEnable(GL_TEXTURE_2D);
+	  if(!texLoader.loadTexture("Assets/SKB/SKB_RT.jpg", &texID[0] )){
+			cout << "Error en la carga de la textura" << endl;
+			return;
+	  }
+	  if(!texLoader.loadTexture("Assets/SKB/SKB_LF.jpg", &texID[1] )){
+			cout << "Error en la carga de la textura" << endl;
+			return;
+	  }
+	  if(!texLoader.loadTexture("Assets/SKB/SKB_BK.jpg", &texID[2] )){
+			cout << "Error en la carga de la textura" << endl;
+			return;
+	  }
+	  if(!texLoader.loadTexture("Assets/SKB/SKB_FR.jpg", &texID[3] )){
+			cout << "Error en la carga de la textura" << endl;
+			return;
+	  }
+	  if(!texLoader.loadTexture("Assets/SKB/SKB_UP.jpg", &texID[4] )){
+			cout << "Error en la carga de la textura" << endl;
+			return;
+	  }
+	  if(!texLoader.loadTexture("Assets/SKB/SKB_DN.jpg", &texID[5] )){
+			cout << "Error en la carga de la textura" << endl;
+			return;
+	  }
+	 // glEnable(GL_TEXTURE_2D);							// Habilitando mapeo de texturas
+	  //glShadeModel(GL_SMOOTH);							// Shader
 	  glClearDepth(1.0f);									// Estado inicial del depth buffer
 	  glEnable(GL_DEPTH_TEST);							// Testeo del depth buffer
 	  glDepthFunc(GL_LEQUAL);								// Tipo de testeo
-	  glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
+	 // glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
 
 	  //Cargando modelo de nave
-	  Load_3DS_Object("Assets/Models/Firebird/Firebird.3ds"); 
+	  //Load_3DS_Object("Assets/Models/Firebird/Firebird.3ds"); 
 	// Turn on a lighting and enable it, we will just use the default values in this case
 	// We also want color, so we turn that on
-	  glEnable(GL_LIGHT0);								// Turn on a light with defaults set
-	  glEnable(GL_LIGHTING);							// Turn on lighting
-	  glEnable(GL_COLOR_MATERIAL);						// Allow color
 	  calculateAsteroidsInitPos(101);					// Establishing asteroids initial position
 	  CreateList();
-	   glLightfv(GL_LIGHT0, GL_POSITION, LightPos);        // Set Light1 Position
-		glLightfv(GL_LIGHT0, GL_AMBIENT, LightAmb);         // Set Light1 Ambience
-		glLightfv(GL_LIGHT0, GL_DIFFUSE, LightDif);         // Set Light1 Diffuse
-		glLightfv(GL_LIGHT0, GL_SPECULAR, LightSpc);        // Set Light1 Specular
-		glEnable(GL_LIGHT0);                                // Enable Light1
-		glEnable(GL_LIGHTING);
- /* Uso depth buffering para la eliminacion de superficies ocultas */
-	  //asteroids_positions[0].x = 0.0; asteroids_positions[0].y = 0.0; asteroids_positions[0].z = 0.0;
-	  //asteroids_positions[1].x = -20.0; asteroids_positions[1].y= 50.0; asteroids_positions[1].z = 65.0;
-	  //asteroids_positions[2].x = -1000.0; asteroids_positions[2].y= 50.0; asteroids_positions[2].z = -120.0;
+	  glLightfv(GL_LIGHT0, GL_POSITION, LightPos);        // Set Light1 Position
+	  glLightfv(GL_LIGHT0, GL_AMBIENT, LightAmb);         // Set Light1 Ambience
+	  glLightfv(GL_LIGHT0, GL_DIFFUSE, LightDif);         // Set Light1 Diffuse
+	  glLightfv(GL_LIGHT0, GL_SPECULAR, LightSpc);        // Set Light1 Specular
+	  glEnable(GL_LIGHT0);                                // Enable Light1
+	  glEnable(GL_LIGHTING);
+	  glEnable(GL_COLOR_MATERIAL);						// Allow color
 }
 
 int main(int argc, char* argv[])

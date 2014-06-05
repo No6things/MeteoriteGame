@@ -20,13 +20,14 @@ void Display()  // funcion para dibujar todo!
 
 	glLoadIdentity();
 	gluLookAt(4000,10,0,0,0,0,0,1,0);	//position,focus point,up vector
+	//skybox
+	skybox();
 	//Calculando FPS. Se puede poner en un hilo
 	info.FramesPerSecond();
 	//Mostrando resultado
 	if(final_result==-1){
 		//Mostrando todo el texto
 		info.mostrarFPS(90,5,200,200,red,GLUT_BITMAP_HELVETICA_12,1);
-	
 		//Dibujando modelo
 		GLfloat mat_ambient[] = { 0.04f, 0.28f, 0.36f, 1.0f };
 		GLfloat mat_diffuse[] = { 0.05f, 0.5f, 0.9f, 1.0f };

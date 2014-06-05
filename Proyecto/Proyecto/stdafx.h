@@ -7,6 +7,7 @@ using namespace std;
 #include <GL\freeglut.h>
 #include <cstdio>
 #include <vector>
+#include <map>
 #include <algorithm>
 #include <stdlib.h>
 #include <string.h>
@@ -14,6 +15,8 @@ using namespace std;
 #include <time.h>
 #include <iostream>
 #include <XInput.h>
+#include "TextureManager.h"
+#include "FreeImage.h"
 #include "TextureObjects.h"
 #include "cargador.h"
 #include "3ds.h"

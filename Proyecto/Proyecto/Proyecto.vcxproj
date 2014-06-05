@@ -55,8 +55,10 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="texto.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TextureObjects.cpp" />
     <ClCompile Include="variables_globales.cpp" />
+    <ClCompile Include="xbox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3ds.h" />
@@ -66,8 +68,10 @@
     <ClInclude Include="jpeglib.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="texto.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TextureObjects.h" />
     <ClInclude Include="variables_globales.h" />
+    <ClInclude Include="xbox.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="jpeg.lib" />

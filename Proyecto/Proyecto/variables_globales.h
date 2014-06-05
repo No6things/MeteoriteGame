@@ -38,4 +38,6 @@ extern float LightAmb[];  // Ambient Light Values
 extern float LightDif[]; // Diffuse Light Values
 extern float LightSpc[];// Specular Light Values
 extern int vidas;
+extern TextureManager texLoader;
+extern GLuint texID[100];
 #endif
