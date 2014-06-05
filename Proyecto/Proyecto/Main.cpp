@@ -22,7 +22,8 @@ void Init(int argc, char* argv[]){
 	  glutInitWindowSize(w, h);
 	  glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE |GLUT_DEPTH);
 	  main_window= glutCreateWindow("Skeip");
-
+	  state=UNSTART;
+	  cout<<"unstart"<<endl;
 	  InitOpenGL();
 	  
 	  glEnable(GL_TEXTURE_2D);
@@ -50,8 +51,7 @@ void Init(int argc, char* argv[]){
 			cout << "Error en la carga de la textura" << endl;
 			return;
 	  }
-	 // glEnable(GL_TEXTURE_2D);							// Habilitando mapeo de texturas
-	  //glShadeModel(GL_SMOOTH);							// Shader
+
 	  glClearDepth(1.0f);									// Estado inicial del depth buffer
 	  glEnable(GL_DEPTH_TEST);							// Testeo del depth buffer
 	  glDepthFunc(GL_LEQUAL);								// Tipo de testeo
@@ -59,19 +59,107 @@ void Init(int argc, char* argv[]){
 
 	  //Cargando modelo de nave
 	  //Load_3DS_Object("Assets/Models/Firebird/Firebird.3ds"); 
-	// Turn on a lighting and enable it, we will just use the default values in this case
-	// We also want color, so we turn that on
 	  calculateAsteroidsInitPos(101);					// Establishing asteroids initial position
 	  CreateList();
-	  glLightfv(GL_LIGHT0, GL_POSITION, LightPos);        // Set Light1 Position
+	 /* glLightfv(GL_LIGHT0, GL_POSITION, LightPos);        // Set Light1 Position
 	  glLightfv(GL_LIGHT0, GL_AMBIENT, LightAmb);         // Set Light1 Ambience
 	  glLightfv(GL_LIGHT0, GL_DIFFUSE, LightDif);         // Set Light1 Diffuse
 	  glLightfv(GL_LIGHT0, GL_SPECULAR, LightSpc);        // Set Light1 Specular
 	  glEnable(GL_LIGHT0);                                // Enable Light1
 	  glEnable(GL_LIGHTING);
-	  glEnable(GL_COLOR_MATERIAL);						// Allow color
+	  glEnable(GL_COLOR_MATERIAL);						// Allow color*/
 }
+DWORD WINAPI xboxhandler(void *data){
+	int pv=-1;
+	int i=0;
+	while(1){
+		if(P1->isConnected())
+			{
+				if (state==NOXBOX)state=PLAY;    //Reconectado
+				if(P1->getState().Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT)	//IZQ-1
+				{
+					if(pv!=1){
+						if(state==PLAY){
+							derecha=true;
+							izquierda=false;
+							cont=0;
+						}
+						pv=1;
+					}
+				}
 
+				if(P1->getState().Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT) //DER-2
+				{
+					if(pv!=2){
+						if(state==PLAY){
+							izquierda=true;
+							derecha=false;
+							cont=0;
+						}
+						pv=2;
+					}
+				}
+				if(P1->getState().Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP)   //ARRIBA-3
+				{
+					if(state==PAUSE){
+										cout<<"UP"<<endl;
+
+					}
+					pv=3;
+				}
+
+				if(P1->getState().Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN) //ABAJO-4
+				{
+					if(state==PAUSE){
+										cout<<"down"<<endl;
+
+					}
+					pv=4;
+				}
+
+				if(P1->getState().Gamepad.wButtons & XINPUT_GAMEPAD_X)		//X-5
+				{
+					if(state==PAUSE){
+										cout<<"x"<<endl;
+
+					}
+					pv=5;
+				}
+
+				if(P1->getState().Gamepad.wButtons & XINPUT_GAMEPAD_A)		//A-6
+				{
+					if(state==PAUSE){
+					
+					}
+					pv=6;
+				}
+
+				if(P1->getState().Gamepad.wButtons & XINPUT_GAMEPAD_START)	//START-7
+				{
+					if(pv!=7){
+						if (state==PLAY){state=PAUSE;cout<<"pause"<<endl;}
+						if (state==UNSTART){state=PLAY;cout<<"play"<<endl;}
+						pv=7;
+					}
+				}
+				if(P1->getState().Gamepad.wButtons & XINPUT_GAMEPAD_BACK)	//back-9
+				{
+					if (state==PAUSE){state=PLAY;cout<<"play"<<endl;}
+					pv=9;
+				}
+				if(P1->getState().Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_SHOULDER)	//R2-8
+				{
+					if(pv!=8){
+						glutFullScreenToggle();
+						cout<<"screen"<<endl;
+						pv=8;
+					}
+				}
+				
+			}else state=NOXBOX;
+	}
+	return 0;
+}
 int main(int argc, char* argv[])
 {
 	srand((unsigned)time(NULL));
@@ -84,6 +172,8 @@ int main(int argc, char* argv[])
 	cout << "藩様様様様様様様様様様様様様様夕" << endl;
 	Init(argc, argv); //inicializando ventana, opengl, glut |Inicializar.h
 	Callbacks();	  //asignando callbacks de glut			|Callbacks.h
+	HANDLE Thread;
+	Thread=CreateThread(NULL, 0, xboxhandler, NULL, 0, NULL);
 	glutMainLoop();
   
 	return 0;

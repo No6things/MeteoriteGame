@@ -3,6 +3,9 @@
 #ifndef VARIABLES_GLOBALES_H
 #define VARIABLES_GLOBALES_H
 
+#define UNSTART      	-1
+#define PLAY			7
+#define PAUSE			8
 #define EASY			0
 #define GANONDORF       1
 #define TEMPLEOFWATER   2
@@ -10,8 +13,9 @@
 #define NO   4
 #define WINNER 5
 #define LOSER 6
+#define NOXBOX 9
 
-extern int main_window, h, w, mousex, mousey, dificultad, ronda,segsf,minsf,horasf;
+extern int main_window, h, w, mousex, mousey, dificultad, ronda,segsf,minsf,horasf, state;
 extern int cont;
 extern float g_TranslateX;
 extern float pi;
@@ -40,4 +44,5 @@ extern float LightSpc[];// Specular Light Values
 extern int vidas;
 extern TextureManager texLoader;
 extern GLuint texID[100];
+extern XBOXcontroller *P1;
 #endif

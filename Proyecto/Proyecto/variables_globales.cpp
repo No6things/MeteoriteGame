@@ -1,5 +1,5 @@
 #include "stdafx.h"
-int h=640, w=800, mousex, mousey, main_window,radius,radius2, dificultad=EASY, ronda, wave_started=NO,final_result=-1;
+int h=640, w=800, mousex, mousey, main_window,radius,radius2, dificultad=EASY, ronda, wave_started=NO,final_result=-1,state=-1;
 int cont=0;
 int segsf=-1,minsf=-1,horasf=-1;
 float g_RotateY = 0.0f;
@@ -30,3 +30,4 @@ float LightAmb[]={1.0f,0.0f,0.0f,1.0f} ;  // Ambient Light Values
 float LightDif[]={0.0f,0.5f,0.0f,1.0f}  ; // Diffuse Light Values
 float LightSpc[]={0.0f,1.0f,0.0f,1.0f}   ;// Specular Light Values
 int vidas=20;
+XBOXcontroller* P1=new XBOXcontroller(1);

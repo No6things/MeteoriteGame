@@ -29,6 +29,7 @@ bool chocamos(int i){
 }
 
 void skybox(){
+	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texID[0]);	//front
     glBegin(GL_POLYGON);
     {

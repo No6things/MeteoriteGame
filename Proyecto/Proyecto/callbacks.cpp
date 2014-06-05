@@ -17,17 +17,20 @@ void Display()  // funcion para dibujar todo!
 {
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	glLoadIdentity();
 	gluLookAt(4000,10,0,0,0,0,0,1,0);	//position,focus point,up vector
+
 	//skybox
 	skybox();
-	//Calculando FPS. Se puede poner en un hilo
-	info.FramesPerSecond();
-	//Mostrando resultado
-	if(final_result==-1){
+
+	if((P1->isConnected()) && (state==PLAY)){
+
+		//Calculando FPS. Se puede poner en un hilo
+		info.FramesPerSecond();
+
 		//Mostrando todo el texto
 		info.mostrarFPS(90,5,200,200,red,GLUT_BITMAP_HELVETICA_12,1);
+
 		//Dibujando modelo
 		GLfloat mat_ambient[] = { 0.04f, 0.28f, 0.36f, 1.0f };
 		GLfloat mat_diffuse[] = { 0.05f, 0.5f, 0.9f, 1.0f };
@@ -38,8 +41,15 @@ void Display()  // funcion para dibujar todo!
 		glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
 		glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
 		glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
+
 		Draw_3DS_Object(0,0,0,500);	
-	}else 	info.mostrarResultado(50,90,200,200,red,GLUT_BITMAP_HELVETICA_18,1);
+
+	}else if(state==WINNER || state==LOSER)	info.mostrarResultado(50,90,200,200,red,GLUT_BITMAP_HELVETICA_18,1);	//Mostrando resultado
+	else if(state==PAUSE){
+		info.mostrarTexto("Ha pausado el juego, si desea reanudar presione BACK", 50, 90, 200, 200, red,GLUT_BITMAP_HELVETICA_18,1);
+	}else if(state==UNSTART){
+		info.mostrarTexto("SKEIP, presione START para jugar", 50, 90, 200, 200, red,GLUT_BITMAP_HELVETICA_18,1);
+	}
 
 	glutSwapBuffers();
 	glutPostRedisplay();
@@ -69,7 +79,6 @@ void Keyboard(unsigned char key, int x, int y) // callback para eventos del tecl
 			derecha=false;
 			cont=0;
 			break;
-
 		case 'd': //izquierda
 			derecha=true;
 			izquierda=false;
@@ -81,7 +90,6 @@ void Keyboard(unsigned char key, int x, int y) // callback para eventos del tecl
 		case 'p': //fullscreen
 			glutFullScreenToggle();
 			break;
-
 		case 'g': //golpe
 			golpe=!golpe;
 			break;
@@ -90,18 +98,13 @@ void Keyboard(unsigned char key, int x, int y) // callback para eventos del tecl
 
 void MouseButton(int btn, int state, int x, int y)  // callback de lineas para el mouse
 {
-	/*if (!TwEventMouseButtonGLUT(btn,state,x,y)){
-
-	}*/
+	
 }
 
 void MouseMotion(int x, int y) //mover punto de control
 {
-	//if( !TwEventMouseMotionGLUT(x, y) )  // send event to AntTweakBar
-    //{ 
-		mousex=x;
-		mousey=y;
-//    }
+	mousex=x;
+	mousey=y;
 }
 
 void MousePosition(int x, int y){

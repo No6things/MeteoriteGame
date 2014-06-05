@@ -15,8 +15,9 @@ bool support_list;
 
 void Load_3DS_Object(char *path)
 {
-	int temp;
 	// Load the *.3DS file.  We just pass in an address to our t3DModel structure and the file name string we want to load
+	int temp;
+	char tempstring2[100];
 	g_Load3ds.Import3DS(&g_3DModel, path);			// Load our .3DS file into our model structure
 	centroid.x = centroid.y = centroid.z  = 0;
 	t3DObject *pObject = &g_3DModel.pObject[0];
@@ -34,8 +35,11 @@ void Load_3DS_Object(char *path)
 		
 		if(strlen(g_3DModel.pMaterials[i].strFile) > 0)
 		{
+			strcat(tempstring2,"Assets/Models/Firebird/");
+			strcat(tempstring2,mFileName);
+			cout<<tempstring2<<endl;
 			// We pass in our global texture array, the name of the texture, and an ID to reference it.	
-			Textures.LoadTexture(g_3DModel.pMaterials[i].strFile, g_Texture[i]);				
+			texLoader.loadTexture(""+g_3DModel.pMaterials[i].strFile, g_Texture[i]);				
 		}
 
 		// Set the texture ID for this material
@@ -209,7 +213,7 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 					cout<<"chocamos con el asteroide - "<<i<<endl; 
 					golpe=true;
 					vidas--;
-					if (vidas==0)final_result=LOSER;
+					if (vidas==0)state=LOSER;
 				}
 				asteroids_positions[i].x+=min((0.5*speed_constant),80);
 

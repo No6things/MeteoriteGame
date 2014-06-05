@@ -21,9 +21,9 @@ using namespace std;
 #include "cargador.h"
 #include "3ds.h"
 #include "texto.h"
+#include "xbox.h"
 #include "variables_globales.h"
 #include "algoritmos.h"
-#include "xbox.h"
 #include "callbacks.h"
 
 

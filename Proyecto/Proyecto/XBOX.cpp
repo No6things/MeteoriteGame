@@ -1,12 +1,12 @@
 #include "stdafx.h"
 
 XBOXcontroller::XBOXcontroller(int playerNumber){
-	_controllerNum = playerNumber;
+	_controllerNum = playerNumber-1;
 }
 
 XINPUT_STATE XBOXcontroller:: getState(){
 	ZeroMemory(&_controllerState, sizeof(XINPUT_STATE));
-	DWORD hue= XInputGetState(_controllerNum, &_controllerState);
+	XInputGetState(_controllerNum, &_controllerState);
 	return _controllerState;
 }
 
