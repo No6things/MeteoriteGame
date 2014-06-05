@@ -28,7 +28,7 @@ void Texto::mostrarTexto(char *text, float x, float y, int width, int height,CVe
 		glLoadIdentity();
 		glRasterPos2f(x, y);
 		for(c = text; *c != '\0'; c++)	
-			glutBitmapCharacter(font, *c);
+		glutBitmapCharacter(font, *c);
 		glPopMatrix();
 		glMatrixMode(GL_PROJECTION);
 	glPopMatrix();

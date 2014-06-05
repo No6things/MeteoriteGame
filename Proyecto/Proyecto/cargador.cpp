@@ -135,11 +135,11 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		}
 	}else if (cont<5){
 		
-		glRotatef(20,0.0f,0.0f,1.0f);
+		glRotatef(20,-1.0f,0.0f,1.0f);
 		cont++;
 
 	}else if (cont>=5 && cont<10){
-		glRotatef(-20,0.0f,0.0f,1.0f);
+		glRotatef(-20,-1.0f,0.0f,1.0f);
 		cont++;
 	}
 
@@ -196,7 +196,7 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 		glPushMatrix();
 
 			if(!asteroids_passed[i]){
-				if (!chocamos(i)){
+				if ((!chocamos(i))||(chocamos(i)&&golpe)){
 					glScalef(5.0f, 5.0f, 5.0f);
 					glTranslated(asteroids_positions[i].x, asteroids_positions[i].y, asteroids_positions[i].z);
 
@@ -204,12 +204,12 @@ void Draw_3DS_Object(int pX, int pY, int pZ, int pSize)
 						glCallList(idList+1+i); //Dibujar nave
 					else
 						Draw_Model(asteroid, g_AstTexture);
-				}else{//insertar llamada a animacion y salir de juego
+				}else{					//insertar llamada a animacion y salir de juego
 					asteroids_passed[i]=1;
 					cout<<"chocamos con el asteroide - "<<i<<endl; 
 					//golpe=true;
 				}
-				asteroids_positions[i].x+=(0.5*speed_constant);
+				asteroids_positions[i].x+=max((0.5*speed_constant),80);
 
 			}
 
