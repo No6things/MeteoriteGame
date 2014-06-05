@@ -26,6 +26,15 @@ void Display()  // funcion para dibujar todo!
 	info.mostrarFPS(90,5,200,200,red,GLUT_BITMAP_HELVETICA_12,1);
 	
 	//Dibujando modelo
+	GLfloat mat_ambient[] = { 0.04f, 0.28f, 0.36f, 1.0f };
+ GLfloat mat_diffuse[] = { 0.05f, 0.5f, 0.9f, 1.0f };
+ GLfloat mat_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+ GLfloat mat_shininess[] = { 128.0f };
+
+  glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+ glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+ glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+ glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
 	Draw_3DS_Object(0,0,0,500);	
 	glutSwapBuffers();
 	glutPostRedisplay();

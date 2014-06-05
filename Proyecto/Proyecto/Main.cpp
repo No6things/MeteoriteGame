@@ -41,6 +41,13 @@ void Init(int argc, char* argv[]){
 	  glEnable(GL_COLOR_MATERIAL);						// Allow color
 	  calculateAsteroidsInitPos(101);					// Establishing asteroids initial position
 	  CreateList();
+	   glLightfv(GL_LIGHT0, GL_POSITION, LightPos);        // Set Light1 Position
+		glLightfv(GL_LIGHT0, GL_AMBIENT, LightAmb);         // Set Light1 Ambience
+		glLightfv(GL_LIGHT0, GL_DIFFUSE, LightDif);         // Set Light1 Diffuse
+		glLightfv(GL_LIGHT0, GL_SPECULAR, LightSpc);        // Set Light1 Specular
+		glEnable(GL_LIGHT0);                                // Enable Light1
+		glEnable(GL_LIGHTING);
+ /* Uso depth buffering para la eliminacion de superficies ocultas */
 	  //asteroids_positions[0].x = 0.0; asteroids_positions[0].y = 0.0; asteroids_positions[0].z = 0.0;
 	  //asteroids_positions[1].x = -20.0; asteroids_positions[1].y= 50.0; asteroids_positions[1].z = 65.0;
 	  //asteroids_positions[2].x = -1000.0; asteroids_positions[2].y= 50.0; asteroids_positions[2].z = -120.0;
