@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #ifndef _XBOX_CONTROLLER_H_
 #define _XBOX_CONTROLLER_H_
 
@@ -21,4 +21,4 @@ class XBOXcontroller{
 		void vibrate(int leftVal = 0, int rightVal = 0);
 };
 
-#endif
+#endif*/

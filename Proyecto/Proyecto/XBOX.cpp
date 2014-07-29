@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-XBOXcontroller::XBOXcontroller(int playerNumber){
+/*XBOXcontroller::XBOXcontroller(int playerNumber){
 	_controllerNum = playerNumber;
 }
 
@@ -27,4 +27,4 @@ void XBOXcontroller:: vibrate(int leftVal, int rightVal){
 	Vibration.wLeftMotorSpeed = leftVal;
 	Vibration.wRightMotorSpeed = rightVal;
 	DWORD HUE=XInputSetState(_controllerNum, &Vibration);
-}
+}*/
